@@ -1,7 +1,7 @@
 {
   "items": [
-    {"src": "./img/screens/hero-1.png", "alt": "Словники та набори"},
-    {"src": "./img/screens/hero-2.png", "alt": "Артиклі"},
-    {"src": "./img/screens/hero-3.png", "alt": "Прийменники"}
+    {"src": "./img/hero/screen-1.png", "alt": "Слова: тренування"},
+    {"src": "./img/hero/screen-2.png", "alt": "Артиклі: тренування"},
+    {"src": "./img/hero/screen-3.png", "alt": "Прийменники: вправи"}
   ]
 }

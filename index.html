@@ -3,12 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOYAMOVA — тренажер слів і коротких вправ для вивчення мов</title>
-  <meta name="description" content="MOYAMOVA — простий тренажер слів і вправ: короткі сесії, прогрес на пристрої, офлайн. Працює у браузері без реєстрації та реклами." />
+  <title>MOYAMOVA — тренажер слів для німецької та англійської</title>
+  <meta name="description" content="MOYAMOVA — простий тренажер слів: німецька та англійська. Без реклами, без реєстрації, офлайн-доступний." />
 
-  <meta property="og:title" content="MOYAMOVA — тренажер слів і вправ" />
-  <meta property="og:description" content="Короткі сесії для вивчення мов: слова + вправи, прогрес на пристрої, офлайн. Без реєстрації та реклами." />
+  <meta property="og:title" content="MOYAMOVA — тренажер слів" />
+  <meta property="og:description" content="Німецька та англійська. Просто, офлайн-доступно, без реклами." />
   <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/main.css" />
 </head>
@@ -16,8 +21,8 @@
 <header class="topbar">
   <div class="topbar__inner">
     <a class="brand" href="./index.html" aria-label="MOYAMOVA">
-      <img class="brand__logoImg" src="./img/hero/logo.svg" alt="MOYAMOVA" width="120" height="48" />
-      <span class="brand__name">moyamova</span>
+      <img class="brand__logoImg" src="./img/hero/logo.png" alt="MOYAMOVA" width="44" height="44" />
+      <span class="brand__name">MOYAMOVA</span>
     </a>
 
     <a class="btn btn--primary" href="#" id="ctaGooglePlay">Google Play</a>
@@ -36,9 +41,10 @@
         <div class="heroPhone">
           <div class="phone phone--xl">
             <div class="phone__screen">
-              <img id="heroScreensImg" src="./img/slides/guide/demo-1.svg" alt="Екран" />
+              <img id="heroScreensImg" src="./img/hero/screen-1.png" alt="Екран тренажера MOYAMOVA" />
             </div>
-            <div class="phone__notch" aria-hidden="true"></div>
+            <div class="phone__island" aria-hidden="true"></div>
+            <div class="phone__island-dot" aria-hidden="true"></div>
           </div>
           <div class="dots" data-dots id="heroDots" aria-hidden="true"></div>
         </div>
@@ -53,17 +59,18 @@
         <div class="slideMedia" id="heroInlineScreens" aria-hidden="true">
           <div class="phone">
             <div class="phone__screen">
-              <img id="heroInlineImg" src="./img/slides/guide/demo-1.svg" alt="" />
+              <img id="heroInlineImg" src="./img/hero/screen-1.png" alt="" />
             </div>
-            <div class="phone__notch" aria-hidden="true"></div>
+            <div class="phone__island" aria-hidden="true"></div>
+            <div class="phone__island-dot" aria-hidden="true"></div>
           </div>
         </div>
 
-        <p class="muted">MOYAMOVA — веб‑тренажер, який допомагає запам’ятовувати лексику та граматичні патерни через різні типи вправ. Працює прямо в браузері: без реєстрації, без реклами, із прогресом на вашому пристрої та офлайн‑доступом.</p>
+        <p>MOYAMOVA — веб‑тренажер, який допомагає запам’ятовувати лексику та граматичні патерни через різні типи вправ. Працює прямо в браузері: без реєстрації, без реклами, із прогресом на вашому пристрої та офлайн‑доступом.</p>
 
-<p class="muted">Обирай словники, фільтри й розмір сету, додавай у обране ⭐ та відстежуй помилки ⚠️ — щоб повторювати саме те, що «просідає». Є озвучка, приклади, контекст і режим «зворотного перекладу».</p>
+        <p>Обирай словники, фільтруй і розмір сету, додавай у обране ⭐ та відстежуй помилки ⚠️ — щоб повторювати саме те, що «просідає». Є озвучка, приклади, контекст і режим «зворотного перекладу».</p>
 
-<p class="muted">Це живий проект: ми поступово додаємо нові мови та вправи, а фідбек напряму впливає на розвиток. Запусти тренажер і зроби коротку сесію — щоб відчути прогрес уже сьогодні.</p>
+        <p class="muted">Це живий проєкт: ми поступово додаємо нові мови та вправи, а фідбек напряму впливає на розвиток. Запусти тренажер і зроби коротку сесію — щоб відчути прогрес уже сьогодні.</p>
 
         <div class="heroActions">
           <a class="btn btn--accent allow-trainer" href="#" id="ctaTry">Запустити тренажер</a>
