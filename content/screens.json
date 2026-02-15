@@ -1,7 +1,7 @@
 {
   "items": [
-    {"src": "./img/slides/guide/demo-1.svg", "alt": "Екран 1"},
-    {"src": "./img/slides/guide/demo-2.svg", "alt": "Екран 2"},
-    {"src": "./img/slides/guide/demo-3.svg", "alt": "Екран 3"}
+    {"src": "./img/screens/hero-1.png", "alt": "Словники та набори"},
+    {"src": "./img/screens/hero-2.png", "alt": "Артиклі"},
+    {"src": "./img/screens/hero-3.png", "alt": "Прийменники"}
   ]
 }
