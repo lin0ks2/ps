@@ -1,128 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOYAMOVA — тренажер слів для німецької та англійської</title>
-  <meta name="description" content="MOYAMOVA — простий тренажер слів: німецька та англійська. Без реклами, без реєстрації, офлайн-доступний." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOYAMOVA — тренажер слів</title>
 
-  <meta property="og:title" content="MOYAMOVA — тренажер слів" />
-  <meta property="og:description" content="Німецька та англійська. Просто, офлайн-доступно, без реклами." />
-  <meta property="og:type" content="website" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
-<header class="topbar">
-  <div class="topbar__inner">
-    <a class="brand" href="./index.html" aria-label="MOYAMOVA">
-      <img class="brand__logoImg" src="./img/hero/logo.png" alt="MOYAMOVA" width="44" height="44" />
-      <span class="brand__name">MOYAMOVA</span>
-    </a>
 
-    <a class="btn btn--primary" href="#" id="ctaGooglePlay">Google Play</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo-wrap">
+      <img src="img/hero/logo.png" alt="MOYAMOVA" class="logo-img" />
+      <span class="logo-text">MOYAMOVA</span>
+    </div>
+    <a href="https://play.google.com/" class="btn-google">Google Play</a>
   </div>
 </header>
 
-<main class="page">
+<section class="hero">
+  <div class="container hero-inner">
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero__inner">
-
-      <!-- Desktop left: screens slider -->
-      <div class="panel panel--screens" id="heroScreens">
-        <div class="panel__title">screens</div>
-        <div class="heroPhone">
-          <div class="phone phone--xl">
-            <div class="phone__screen">
-              <img id="heroScreensImg" src="./img/hero/screen-1.png" alt="Екран тренажера MOYAMOVA" />
-            </div>
-            <div class="phone__island" aria-hidden="true"></div>
-            <div class="phone__island-dot" aria-hidden="true"></div>
-          </div>
-          <div class="dots" data-dots id="heroDots" aria-hidden="true"></div>
-        </div>
+    <div class="hero-slider">
+      <div class="phone-frame">
+        <div class="dynamic-island"></div>
+        <img src="img/hero/screen-1.png" alt="App screen" />
       </div>
-
-      <!-- Right: text -->
-      <div class="panel panel--text" id="heroText">
-        <h1 class="h1">MOYAMOVA — тренажер слів</h1>
-        <p class="lead">Вчи мови короткими сесіями: слова, артиклі, прийменники та інші міні‑вправи. Без перевантаження — кілька хвилин, коли є час.</p>
-
-        <!-- Mobile inline media: same screen, wrapped text -->
-        <div class="slideMedia" id="heroInlineScreens" aria-hidden="true">
-          <div class="phone">
-            <div class="phone__screen">
-              <img id="heroInlineImg" src="./img/hero/screen-1.png" alt="" />
-            </div>
-            <div class="phone__island" aria-hidden="true"></div>
-            <div class="phone__island-dot" aria-hidden="true"></div>
-          </div>
-        </div>
-
-        <p>MOYAMOVA — веб‑тренажер, який допомагає запам’ятовувати лексику та граматичні патерни через різні типи вправ. Працює прямо в браузері: без реєстрації, без реклами, із прогресом на вашому пристрої та офлайн‑доступом.</p>
-
-        <p>Обирай словники, фільтруй і розмір сету, додавай у обране ⭐ та відстежуй помилки ⚠️ — щоб повторювати саме те, що «просідає». Є озвучка, приклади, контекст і режим «зворотного перекладу».</p>
-
-        <p class="muted">Це живий проєкт: ми поступово додаємо нові мови та вправи, а фідбек напряму впливає на розвиток. Запусти тренажер і зроби коротку сесію — щоб відчути прогрес уже сьогодні.</p>
-
-        <div class="heroActions">
-          <a class="btn btn--accent allow-trainer" href="#" id="ctaTry">Запустити тренажер</a>
-          <span class="hint">На десктопі відкриємо в окремому вікні фіксованого розміру.</span>
-        </div>
+      <div class="slider-dots">
+        <span></span><span></span><span></span>
       </div>
-
     </div>
-  </section>
 
-  <!-- NEWS (slider) -->
-  <section class="section" id="newsSection" aria-label="Новини">
-    <h2 class="h2">Новини</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1>MOYAMOVA — тренажер слів</h1>
+
+      <p><strong>Вчи мови короткими сесіями:</strong> слова, артиклі, прийменники та інші міні‑вправи. Без перевантаження — кілька хвилин, коли є час.</p>
+
+      <p>MOYAMOVA — веб‑тренажер, який допомагає запам’ятовувати лексику та граматичні патерни через різні типи вправ. Працює прямо в браузері: без реєстрації, без реклами, із прогресом на вашому пристрої та офлайн‑доступом.</p>
+
+      <p>Обирай словники, фільтруй і розмір сету, додавай у обране ⭐ та відстежуй помилки ⚠️ — щоб повторювати саме те, що «просідає». Є озвучка, приклади, контекст і режим «зворотного перекладу».</p>
+
+      <p>Це живий проєкт: ми поступово додаємо нові мови та вправи, а фідбек напряму впливає на розвиток. Запусти тренажер і зроби коротку сесію — щоб відчути прогрес уже сьогодні.</p>
+
+      <a href="https://moyamova.online" class="btn-hero">Запустити тренажер</a>
     </div>
-  </section>
 
-  <!-- GUIDE (slider) -->
-  <section class="section" id="guideSection" aria-label="Гайд">
-    <h2 class="h2">Гайд</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- SUPPORT (slider) -->
-  <section class="section" id="supportSection" aria-label="Підтримка">
-    <h2 class="h2">Підтримка</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="footer__inner">
-    <a class="btn btn--secondary" href="#" id="ctaDonate">Підтримати</a>
-    <div class="footer__mid">© MOYAMOVA</div>
-    <a class="btn btn--primary" href="#" id="ctaGooglePlay2">Google Play</a>
   </div>
-  <div class="footer__links">
-    <a href="./legal/privacy.html">Політика</a>
-    <a href="./legal/terms.html">Умови</a>
-    <a href="./legal/impressum.html">Impressum</a>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 MOYAMOVA</p>
   </div>
 </footer>
 
-<script type="module" src="./assets/js/app.js"></script>
 </body>
 </html>
