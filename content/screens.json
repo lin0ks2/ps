@@ -1,7 +1,7 @@
 {
   "items": [
-    {"src": "./img/hero/screen-1.png", "alt": "Слова: тренування"},
-    {"src": "./img/hero/screen-2.png", "alt": "Артиклі: тренування"},
-    {"src": "./img/hero/screen-3.png", "alt": "Прийменники: вправи"}
+    {"src": "./img/slides/guide/demo-1.svg", "alt": "Екран 1"},
+    {"src": "./img/slides/guide/demo-2.svg", "alt": "Екран 2"},
+    {"src": "./img/slides/guide/demo-3.svg", "alt": "Екран 3"}
   ]
 }
