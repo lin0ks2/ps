@@ -17,7 +17,7 @@
       feature3Title: 'Конструкции', feature3Text: 'Закрепляйте предлоги и устойчивые сочетания на практике.',
       flow1: 'Изучи', flow2: 'Повтори', flow3: 'Посмотри', flow4: 'Практикуй снова',
       youtubeTitle: 'Смотри. Запоминай. Возвращайся к практике.', youtubeIntro: 'Два канала с немецким: выбирайте удобный язык объяснений.',
-      videoPending: 'Последние видео появятся здесь', videoConfig: 'После добавления ID канала в config.js',
+      videoPending: 'Загружаем последние видео…', videoConfig: 'Если список ещё не обновился — откройте канал напрямую.',
       channelUkText: 'Немецкий с украинским переводом', channelRuText: 'Немецкий с русским переводом', openChannel: 'Открыть канал',
       ctaKicker: 'Можно начать прямо сейчас', ctaTitle: 'Открой MOYAMOVA и попробуй одну сессию.',
       footerText: 'Немецкий — меньше теории, больше практики.', trainerLink: 'Тренажёр', privacy: 'Политика конфиденциальности', terms: 'Условия использования'
@@ -36,7 +36,7 @@
       feature3Title: 'Конструкції', feature3Text: 'Закріплюйте прийменники та сталі сполучення на практиці.',
       flow1: 'Вивчи', flow2: 'Повтори', flow3: 'Подивись', flow4: 'Практикуй знову',
       youtubeTitle: 'Дивись. Запам’ятовуй. Повертайся до практики.', youtubeIntro: 'Два канали з німецькою: обирайте зручну мову пояснень.',
-      videoPending: 'Останні відео з’являться тут', videoConfig: 'Після додавання ID каналу в config.js',
+      videoPending: 'Завантажуємо останні відео…', videoConfig: 'Якщо список ще не оновився — відкрийте канал напряму.',
       channelUkText: 'Німецька з українським перекладом', channelRuText: 'Німецька з російським перекладом', openChannel: 'Відкрити канал',
       ctaKicker: 'Можна почати прямо зараз', ctaTitle: 'Відкрий MOYAMOVA і спробуй одну сесію.',
       footerText: 'Німецька — менше теорії, більше практики.', trainerLink: 'Тренажер', privacy: 'Політика конфіденційності', terms: 'Умови використання'
@@ -78,11 +78,10 @@
   document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.langBtn)));
   setLanguage(localStorage.getItem('moyamova-lang') || (navigator.language?.toLowerCase().startsWith('uk') ? 'uk' : 'ru'));
 
-  function setupChannel(code) {
+  function setupChannelLink(code) {
     const channel = config.channels?.[code];
     if (!channel) return;
     const link = document.querySelector(`[data-channel-link="${code}"]`);
-    const slot = document.querySelector(`[data-video-slot="${code}"]`);
     const channelId = (channel.channelId || '').trim();
     const channelUrl = (channel.channelUrl || '').trim() || (channelId ? `https://www.youtube.com/channel/${channelId}` : '');
 
@@ -93,15 +92,54 @@
       link.classList.remove('is-disabled');
       link.removeAttribute('aria-disabled');
     }
+  }
 
-    if (slot && channelId && /^UC[\w-]{20,}$/.test(channelId)) {
-      const uploadsPlaylist = `UU${channelId.slice(2)}`;
-      slot.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(uploadsPlaylist)}" title="MOYAMOVA YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-      slot.classList.add('has-video');
+  function escapeHtml(value = '') {
+    return String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  }
+
+  function renderVideos(code, videos) {
+    const slot = document.querySelector(`[data-video-slot="${code}"]`);
+    if (!slot || !Array.isArray(videos) || !videos.length) return;
+
+    slot.classList.add('has-videos');
+    slot.innerHTML = videos.slice(0, 3).map((video, index) => {
+      const id = encodeURIComponent(video.id || '');
+      const url = `https://www.youtube.com/watch?v=${id}`;
+      const thumb = video.thumbnail || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+      const title = escapeHtml(video.title || 'MOYAMOVA');
+      const date = video.published ? new Date(video.published) : null;
+      const dateLabel = date && !Number.isNaN(date.valueOf())
+        ? new Intl.DateTimeFormat(document.documentElement.lang === 'uk' ? 'uk-UA' : 'ru-RU', {day:'2-digit', month:'short'}).format(date)
+        : '';
+
+      return `<a class="video-card${index === 0 ? ' video-card-main' : ''}" href="${url}" target="_blank" rel="noopener" aria-label="${title}">
+        <span class="video-thumb">
+          <img src="${escapeHtml(thumb)}" alt="" loading="lazy">
+          <span class="video-play" aria-hidden="true">▶</span>
+        </span>
+        <span class="video-meta">
+          <strong>${title}</strong>
+          ${dateLabel ? `<small>${escapeHtml(dateLabel)}</small>` : ''}
+        </span>
+      </a>`;
+    }).join('');
+  }
+
+  async function loadLatestVideos() {
+    try {
+      const response = await fetch('./assets/data/youtube.json', {cache: 'no-store'});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      renderVideos('uk', data.channels?.uk || []);
+      renderVideos('ru', data.channels?.ru || []);
+    } catch (error) {
+      console.warn('MOYAMOVA: youtube.json is not available yet.', error);
     }
   }
 
-  setupChannel('uk');
-  setupChannel('ru');
+  setupChannelLink('uk');
+  setupChannelLink('ru');
+  loadLatestVideos();
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
