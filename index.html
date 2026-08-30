@@ -1,122 +1,203 @@
 <!doctype html>
-<html lang="uk">
+<html lang="ru" data-lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MOYAMOVA — тренажер слів для німецької та англійської</title>
-  <meta name="description" content="MOYAMOVA — простий тренажер слів: німецька та англійська. Без реклами, без реєстрації, офлайн-доступний." />
-
-  <meta property="og:title" content="MOYAMOVA — тренажер слів" />
-  <meta property="og:description" content="Німецька та англійська. Просто, офлайн-доступно, без реклами." />
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="./assets/css/main.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7fbfc">
+  <title>MOYAMOVA — тренажёр немецкого языка</title>
+  <meta name="description" content="MOYAMOVA — веб-тренажёр немецкого языка: слова, артикли, предлоги и практика. Откройте тренажёр прямо в браузере.">
+  <meta property="og:title" content="MOYAMOVA — тренажёр немецкого языка">
+  <meta property="og:description" content="Учите немецкий практикой. Тренажёр и видео на русском и украинском.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/img/logo.png">
+  <link rel="icon" href="./assets/img/logo.png">
+  <link rel="preload" href="./assets/img/app/screen-1.png" as="image">
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="topbar__inner">
-    <a class="brand" href="./index.html" aria-label="MOYAMOVA">
-      <img class="brand__logoImg" src="./img/hero/logo.svg" alt="MOYAMOVA" width="120" height="48" />
-      <span class="brand__name">moyamova</span>
-    </a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="MOYAMOVA — на главную">
+        <img src="./assets/img/logo.png" alt="" width="38" height="38">
+        <span>MOYAMOVA</span>
+      </a>
+      <nav class="header-actions" aria-label="Основная навигация">
+        <a class="nav-link desktop-only" href="#trainer" data-i18n="navTrainer">Тренажёр</a>
+        <a class="nav-link desktop-only" href="#youtube">YouTube</a>
+        <div class="lang-switch" aria-label="Язык сайта">
+          <button class="lang-btn is-active" type="button" data-lang-btn="ru">RU</button>
+          <button class="lang-btn" type="button" data-lang-btn="uk">UA</button>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <a class="btn btn--primary" href="#" id="ctaGooglePlay">Google Play</a>
-  </div>
-</header>
-
-<main class="page">
-
-  <!-- HERO -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero__inner">
-
-      <!-- Desktop left: screens slider -->
-      <div class="panel panel--screens" id="heroScreens">
-        <div class="panel__title">screens</div>
-        <div class="heroPhone">
-          <div class="phone phone--xl">
-            <div class="phone__screen">
-              <img id="heroScreensImg" src="./img/slides/guide/demo-1.svg" alt="Екран" />
-            </div>
-            <div class="phone__notch" aria-hidden="true"></div>
-          </div>
-          <div class="dots" data-dots id="heroDots" aria-hidden="true"></div>
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">Немецкий без лишней теории</span></div>
+        <h1 data-i18n="heroTitle">Учи немецкий<br><span>практикой.</span></h1>
+        <p class="hero-lead" data-i18n="heroLead">MOYAMOVA — простой тренажёр слов, артиклей и конструкций. Открывается прямо в браузере.</p>
+        <div class="hero-actions">
+          <a href="https://moyamova.online/" class="btn btn-primary" data-open-trainer>
+            <span data-i18n="openTrainer">Запустить тренажёр</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="hero-note" data-i18n="heroNote">Бесплатно · без установки</p>
+        </div>
+        <div class="hero-points" aria-label="Преимущества">
+          <span><b>01</b><span data-i18n="point1">Слова и переводы</span></span>
+          <span><b>02</b><span data-i18n="point2">Артикли и грамматика</span></span>
+          <span><b>03</b><span data-i18n="point3">Повторение ошибок</span></span>
         </div>
       </div>
 
-      <!-- Right: text -->
-      <div class="panel panel--text" id="heroText">
-        <h1 class="h1">MOYAMOVA — тренажер слів</h1>
-        <p class="lead">
-          Демо-копірайт. Тут буде коротке, зрозуміле пояснення цінності: швидкі сесії, без реклами та реєстрації,
-          німецька й англійська, прогрес на пристрої.
-        </p>
+      <div class="hero-visual" aria-label="Интерфейс тренажёра MOYAMOVA">
+        <div class="glow glow-a"></div>
+        <div class="glow glow-b"></div>
+        <div class="phone-card phone-main">
+          <img src="./assets/img/app/screen-1.png" alt="Экран тренажёра MOYAMOVA" width="944" height="2048">
+        </div>
+        <div class="floating-card floating-one"><span class="floating-icon">✓</span><span data-i18n="floatPractice">Практика<br><b>без перегруза</b></span></div>
+        <div class="floating-card floating-two"><span class="level-chip">A1–B2</span><span data-i18n="floatLevel">в одном<br>тренажёре</span></div>
+      </div>
+    </section>
 
-        <!-- Mobile inline media: same screen, wrapped text -->
-        <div class="slideMedia" id="heroInlineScreens" aria-hidden="true">
-          <div class="phone">
-            <div class="phone__screen">
-              <img id="heroInlineImg" src="./img/slides/guide/demo-1.svg" alt="" />
-            </div>
-            <div class="phone__notch" aria-hidden="true"></div>
+    <section class="trainer-section" id="trainer">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker" data-i18n="trainerKicker">Внутри MOYAMOVA</p>
+            <h2 data-i18n="trainerTitle">Только то, что помогает практиковаться.</h2>
           </div>
+          <p data-i18n="trainerIntro">Короткие сессии, понятный интерфейс и разные типы заданий — чтобы возвращаться к немецкому регулярно.</p>
         </div>
 
-        <p class="muted">
-          Демо-текст для макета. Пізніше замінимо на фінальний SEO-текст українською.
-        </p>
+        <div class="feature-grid">
+          <article class="feature feature-large">
+            <div class="feature-copy">
+              <span class="feature-number">01</span>
+              <h3 data-i18n="feature1Title">Слова и переводы</h3>
+              <p data-i18n="feature1Text">Тренируйте лексику в обе стороны и сразу проверяйте себя.</p>
+            </div>
+            <div class="screen-crop"><img src="./assets/img/app/screen-1.png" alt="Тренировка слов в MOYAMOVA" loading="lazy"></div>
+          </article>
 
-        <div class="heroActions">
-          <a class="btn btn--accent allow-trainer" href="#" id="ctaTry">Запустити тренажер</a>
-          <span class="hint">На десктопі відкриємо в окремому вікні фіксованого розміру.</span>
+          <article class="feature">
+            <div class="feature-copy">
+              <span class="feature-number">02</span>
+              <h3 data-i18n="feature2Title">Артикли</h3>
+              <p data-i18n="feature2Text">Отдельная практика der, die, das без лишних отвлечений.</p>
+            </div>
+            <div class="screen-crop crop-two"><img src="./assets/img/app/screen-2.png" alt="Тренировка артиклей в MOYAMOVA" loading="lazy"></div>
+          </article>
+
+          <article class="feature">
+            <div class="feature-copy">
+              <span class="feature-number">03</span>
+              <h3 data-i18n="feature3Title">Конструкции</h3>
+              <p data-i18n="feature3Text">Закрепляйте предлоги и устойчивые сочетания на практике.</p>
+            </div>
+            <div class="screen-crop crop-three"><img src="./assets/img/app/screen-3.png" alt="Практика конструкций в MOYAMOVA" loading="lazy"></div>
+          </article>
         </div>
       </div>
+    </section>
 
+    <section class="flow-section">
+      <div class="shell flow-card">
+        <div class="flow-step"><span>1</span><strong data-i18n="flow1">Изучи</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span>2</span><strong data-i18n="flow2">Повтори</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span>3</span><strong data-i18n="flow3">Посмотри</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span>4</span><strong data-i18n="flow4">Практикуй снова</strong></div>
+      </div>
+    </section>
+
+    <section class="youtube-section" id="youtube">
+      <div class="shell">
+        <div class="section-head youtube-head">
+          <div>
+            <p class="kicker">MOYAMOVA · YouTube</p>
+            <h2 data-i18n="youtubeTitle">Смотри. Запоминай. Возвращайся к практике.</h2>
+          </div>
+          <p data-i18n="youtubeIntro">Два канала с немецким: выбирайте удобный язык объяснений.</p>
+        </div>
+
+        <div class="channel-grid" id="channelGrid">
+          <article class="channel-card" data-channel="uk">
+            <div class="channel-top">
+              <div class="channel-badge"><span class="flag flag-ua" aria-hidden="true"></span><span>Українською</span></div>
+              <span class="youtube-mark">YouTube</span>
+            </div>
+            <div class="video-placeholder" data-video-slot="uk">
+              <div class="video-placeholder-inner">
+                <span class="play-mark">▶</span>
+                <strong data-i18n="videoPending">Последние видео появятся здесь</strong>
+                <small data-i18n="videoConfig">После добавления ID канала в config.js</small>
+              </div>
+            </div>
+            <div class="channel-bottom">
+              <div><strong>MOYAMOVA</strong><span data-i18n="channelUkText">Немецкий с украинским переводом</span></div>
+              <a class="text-link is-disabled" data-channel-link="uk" href="#" aria-disabled="true"><span data-i18n="openChannel">Открыть канал</span> ↗</a>
+            </div>
+          </article>
+
+          <article class="channel-card" data-channel="ru">
+            <div class="channel-top">
+              <div class="channel-badge"><span class="flag flag-ru" aria-hidden="true"></span><span>По-русски</span></div>
+              <span class="youtube-mark">YouTube</span>
+            </div>
+            <div class="video-placeholder" data-video-slot="ru">
+              <div class="video-placeholder-inner">
+                <span class="play-mark">▶</span>
+                <strong data-i18n="videoPending">Последние видео появятся здесь</strong>
+                <small data-i18n="videoConfig">После добавления ID канала в config.js</small>
+              </div>
+            </div>
+            <div class="channel-bottom">
+              <div><strong>MOYAMOVA</strong><span data-i18n="channelRuText">Немецкий с русским переводом</span></div>
+              <a class="text-link is-disabled" data-channel-link="ru" href="#" aria-disabled="true"><span data-i18n="openChannel">Открыть канал</span> ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta shell">
+      <div class="final-cta-card">
+        <img src="./assets/img/logo.png" alt="" width="88" height="88" loading="lazy">
+        <div>
+          <p class="kicker" data-i18n="ctaKicker">Можно начать прямо сейчас</p>
+          <h2 data-i18n="ctaTitle">Открой MOYAMOVA и попробуй одну сессию.</h2>
+        </div>
+        <a href="https://moyamova.online/" class="btn btn-dark" data-open-trainer><span data-i18n="openTrainer">Запустить тренажёр</span><span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top"><img src="./assets/img/logo.png" alt="" width="36" height="36"><span>MOYAMOVA</span></a>
+        <p data-i18n="footerText">Немецкий — меньше теории, больше практики.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://moyamova.online/" target="_blank" rel="noopener" data-i18n="trainerLink">Тренажёр</a>
+        <a href="#youtube">YouTube</a>
+      </div>
+      <div class="footer-links">
+        <a href="./legal/privacy.html" data-i18n="privacy">Политика конфиденциальности</a>
+        <a href="./legal/terms.html" data-i18n="terms">Условия использования</a>
+        <a href="./legal/impressum.html">Impressum</a>
+      </div>
     </div>
-  </section>
+    <div class="shell footer-bottom"><span>© <span id="year"></span> MOYAMOVA</span><span>moyamova.com</span></div>
+  </footer>
 
-  <!-- NEWS (slider) -->
-  <section class="section" id="newsSection" aria-label="Новини">
-    <h2 class="h2">Новини</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- GUIDE (slider) -->
-  <section class="section" id="guideSection" aria-label="Гайд">
-    <h2 class="h2">Гайд</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- SUPPORT (slider) -->
-  <section class="section" id="supportSection" aria-label="Підтримка">
-    <h2 class="h2">Підтримка</h2>
-     <div class="section__body" data-slider>
-      <div data-slide-host></div>
-      <div class="dots" data-dots aria-hidden="true"></div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="footer__inner">
-    <a class="btn btn--secondary" href="#" id="ctaDonate">Підтримати</a>
-    <div class="footer__mid">© MOYAMOVA</div>
-    <a class="btn btn--primary" href="#" id="ctaGooglePlay2">Google Play</a>
-  </div>
-  <div class="footer__links">
-    <a href="./legal/privacy.html">Політика</a>
-    <a href="./legal/terms.html">Умови</a>
-    <a href="./legal/impressum.html">Impressum</a>
-  </div>
-</footer>
-
-<script type="module" src="./assets/js/app.js"></script>
+  <script src="./assets/js/config.js"></script>
+  <script src="./assets/js/app.js"></script>
 </body>
 </html>

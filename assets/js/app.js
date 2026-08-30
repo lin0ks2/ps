@@ -1,133 +1,107 @@
-import { loadJson, escapeHtml } from './content.js';
-import { initSlider } from './slider.js';
+(() => {
+  const config = window.MOYAMOVA_CONFIG || {};
+  const trainerUrl = config.trainerUrl || 'https://moyamova.online/';
 
-const TRAINER_URL = 'https://moyamova.online/';
+  const translations = {
+    ru: {
+      navTrainer: 'Тренажёр', eyebrow: 'Немецкий без лишней теории',
+      heroTitle: 'Учи немецкий<br><span>практикой.</span>',
+      heroLead: 'MOYAMOVA — простой тренажёр слов, артиклей и конструкций. Открывается прямо в браузере.',
+      openTrainer: 'Запустить тренажёр', heroNote: 'Бесплатно · без установки',
+      point1: 'Слова и переводы', point2: 'Артикли и грамматика', point3: 'Повторение ошибок',
+      floatPractice: 'Практика<br><b>без перегруза</b>', floatLevel: 'в одном<br>тренажёре',
+      trainerKicker: 'Внутри MOYAMOVA', trainerTitle: 'Только то, что помогает практиковаться.',
+      trainerIntro: 'Короткие сессии, понятный интерфейс и разные типы заданий — чтобы возвращаться к немецкому регулярно.',
+      feature1Title: 'Слова и переводы', feature1Text: 'Тренируйте лексику в обе стороны и сразу проверяйте себя.',
+      feature2Title: 'Артикли', feature2Text: 'Отдельная практика der, die, das без лишних отвлечений.',
+      feature3Title: 'Конструкции', feature3Text: 'Закрепляйте предлоги и устойчивые сочетания на практике.',
+      flow1: 'Изучи', flow2: 'Повтори', flow3: 'Посмотри', flow4: 'Практикуй снова',
+      youtubeTitle: 'Смотри. Запоминай. Возвращайся к практике.', youtubeIntro: 'Два канала с немецким: выбирайте удобный язык объяснений.',
+      videoPending: 'Последние видео появятся здесь', videoConfig: 'После добавления ID канала в config.js',
+      channelUkText: 'Немецкий с украинским переводом', channelRuText: 'Немецкий с русским переводом', openChannel: 'Открыть канал',
+      ctaKicker: 'Можно начать прямо сейчас', ctaTitle: 'Открой MOYAMOVA и попробуй одну сессию.',
+      footerText: 'Немецкий — меньше теории, больше практики.', trainerLink: 'Тренажёр', privacy: 'Политика конфиденциальности', terms: 'Условия использования'
+    },
+    uk: {
+      navTrainer: 'Тренажер', eyebrow: 'Німецька без зайвої теорії',
+      heroTitle: 'Вивчай німецьку<br><span>на практиці.</span>',
+      heroLead: 'MOYAMOVA — простий тренажер слів, артиклів і конструкцій. Відкривається просто у браузері.',
+      openTrainer: 'Запустити тренажер', heroNote: 'Безкоштовно · без встановлення',
+      point1: 'Слова й переклади', point2: 'Артиклі та граматика', point3: 'Повторення помилок',
+      floatPractice: 'Практика<br><b>без перевантаження</b>', floatLevel: 'в одному<br>тренажері',
+      trainerKicker: 'Всередині MOYAMOVA', trainerTitle: 'Тільки те, що допомагає практикуватися.',
+      trainerIntro: 'Короткі сесії, зрозумілий інтерфейс і різні типи завдань — щоб регулярно повертатися до німецької.',
+      feature1Title: 'Слова й переклади', feature1Text: 'Тренуйте лексику в обидва боки та одразу перевіряйте себе.',
+      feature2Title: 'Артиклі', feature2Text: 'Окрема практика der, die, das без зайвих відволікань.',
+      feature3Title: 'Конструкції', feature3Text: 'Закріплюйте прийменники та сталі сполучення на практиці.',
+      flow1: 'Вивчи', flow2: 'Повтори', flow3: 'Подивись', flow4: 'Практикуй знову',
+      youtubeTitle: 'Дивись. Запам’ятовуй. Повертайся до практики.', youtubeIntro: 'Два канали з німецькою: обирайте зручну мову пояснень.',
+      videoPending: 'Останні відео з’являться тут', videoConfig: 'Після додавання ID каналу в config.js',
+      channelUkText: 'Німецька з українським перекладом', channelRuText: 'Німецька з російським перекладом', openChannel: 'Відкрити канал',
+      ctaKicker: 'Можна почати прямо зараз', ctaTitle: 'Відкрий MOYAMOVA і спробуй одну сесію.',
+      footerText: 'Німецька — менше теорії, більше практики.', trainerLink: 'Тренажер', privacy: 'Політика конфіденційності', terms: 'Умови використання'
+    }
+  };
 
-function openTrainer(e) {
-  if (e) e.preventDefault();
-  const w = 430;
-  const h = 820;
-  const left = Math.max(0, (window.screen.width - w) / 2);
-  const top = Math.max(0, (window.screen.height - h) / 2);
-  window.open(TRAINER_URL, 'moyamova_trainer', `width=${w},height=${h},left=${left},top=${top}`);
-}
-
-function bindCtas() {
-  document.querySelectorAll('[data-open-trainer]').forEach(el => {
-    el.addEventListener('click', openTrainer);
-  });
-
-  document.querySelectorAll('[data-google-play]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Демо: посилання Google Play додамо пізніше.');
-    });
-  });
-
-  const donate = document.querySelector('[data-donate]');
-  if (donate) {
-    donate.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Демо: посилання для донату додамо пізніше.');
-    });
+  function openTrainer(event) {
+    event.preventDefault();
+    const isSmall = window.matchMedia('(max-width: 720px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isSmall) {
+      window.open(trainerUrl, '_blank', 'noopener');
+      return;
+    }
+    const width = 430;
+    const height = Math.min(820, Math.max(650, window.screen.availHeight - 80));
+    const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
+    const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
+    const popup = window.open(trainerUrl, 'moyamova_trainer', `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    if (!popup) window.open(trainerUrl, '_blank', 'noopener');
   }
-}
 
-async function initHeroScreens() {
-  const largeWrap = document.getElementById('heroScreens');
-  const smallWrap = document.getElementById('heroInlineScreens');
-  if (!largeWrap || !smallWrap) return;
+  document.querySelectorAll('[data-open-trainer]').forEach(link => {
+    link.href = trainerUrl;
+    link.addEventListener('click', openTrainer);
+  });
 
-  const data = await loadJson('./content/screens.json');
-  const items = data.items || [];
-  if (!items.length) return;
+  function setLanguage(lang) {
+    if (!translations[lang]) lang = 'ru';
+    document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
+    document.documentElement.dataset.lang = lang;
+    document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.classList.toggle('is-active', btn.dataset.langBtn === lang));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const value = translations[lang][el.dataset.i18n];
+      if (value != null) el.innerHTML = value;
+    });
+    localStorage.setItem('moyamova-lang', lang);
+  }
 
-  const largeImg = largeWrap.querySelector('img');
-  const smallImg = smallWrap.querySelector('img');
-  const dotsWrap = document.getElementById('heroDots');
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.langBtn)));
+  setLanguage(localStorage.getItem('moyamova-lang') || (navigator.language?.toLowerCase().startsWith('uk') ? 'uk' : 'ru'));
 
-  let idx = 0;
-  function apply(i) {
-    idx = i;
-    const it = items[idx];
-    if (largeImg) { largeImg.src = it.src; largeImg.alt = it.alt || ''; }
-    if (smallImg) { smallImg.src = it.src; smallImg.alt = it.alt || ''; }
-    if (dotsWrap) {
-      [...dotsWrap.children].forEach((d, di) => d.classList.toggle('is-active', di === idx));
+  function setupChannel(code) {
+    const channel = config.channels?.[code];
+    if (!channel) return;
+    const link = document.querySelector(`[data-channel-link="${code}"]`);
+    const slot = document.querySelector(`[data-video-slot="${code}"]`);
+    const channelId = (channel.channelId || '').trim();
+    const channelUrl = (channel.channelUrl || '').trim() || (channelId ? `https://www.youtube.com/channel/${channelId}` : '');
+
+    if (link && channelUrl) {
+      link.href = channelUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.classList.remove('is-disabled');
+      link.removeAttribute('aria-disabled');
+    }
+
+    if (slot && channelId && /^UC[\w-]{20,}$/.test(channelId)) {
+      const uploadsPlaylist = `UU${channelId.slice(2)}`;
+      slot.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(uploadsPlaylist)}" title="MOYAMOVA YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+      slot.classList.add('has-video');
     }
   }
 
-  // dots
-  if (dotsWrap) {
-    dotsWrap.innerHTML = '';
-    items.forEach((_, i) => {
-      const d = document.createElement('div');
-      d.className = 'dot' + (i === 0 ? ' is-active' : '');
-      d.addEventListener('click', () => { apply(i); restart(); });
-      dotsWrap.appendChild(d);
-    });
-  }
-
-  let timer = null;
-  function restart() {
-    if (timer) window.clearInterval(timer);
-    timer = window.setInterval(() => apply((idx + 1) % items.length), 10000);
-  }
-  apply(0);
-  restart();
-}
-
-async function initSectionSlider(sectionId, jsonUrl) {
-  const section = document.getElementById(sectionId);
-  if (!section) return;
-  const host = section.querySelector('[data-slide-host]');
-  if (!host) return;
-
-  const data = await loadJson(jsonUrl);
-  const items = data.items || [];
-  if (!items.length) return;
-
-  const render = (item) => {
-    const img0 = (item.images && item.images[0]) ? item.images[0] : '';
-    const title = item.title ? `<div class="slideTitle">${escapeHtml(item.title)}</div>` : '';
-    const date = item.date ? `<div class="slideMeta">${escapeHtml(item.date)}</div>` : '';
-    const text = item.text ? `<p class="slideText">${escapeHtml(item.text)}</p>` : '';
-
-    host.innerHTML = `
-      <div class="slideMedia">
-        <div class="phone phone--small">
-          <div class="phone__screen">
-            <img src="${img0}" alt="${escapeHtml(item.title || '')}" loading="lazy" />
-          </div>
-        </div>
-      </div>
-      <div class="slideBody">
-        ${title}
-        ${date}
-        ${text}
-      </div>
-      <div class="clear"></div>
-    `;
-  };
-
-  initSlider(section, items, render, 10000);
-}
-
-function initLegalBadLinksGuard() {
-  // No “back to trainer” links in this template. This is a safety guard: if any exists, neutralize.
-  document.querySelectorAll('a[href*="trainer"], a[href*="moyamova.online"], a[data-back-to-trainer]').forEach(a => {
-    if (a.classList.contains('allow-trainer')) return;
-    // keep only explicit trainer CTA
-    a.removeAttribute('href');
-  });
-}
-
-(async function main(){
-  bindCtas();
-  initLegalBadLinksGuard();
-
-  await initHeroScreens();
-  await initSectionSlider('newsSection', './content/slides.news.json');
-  await initSectionSlider('guideSection', './content/slides.guide.json');
-  await initSectionSlider('supportSection', './content/slides.support.json');
+  setupChannel('uk');
+  setupChannel('ru');
+  document.getElementById('year').textContent = new Date().getFullYear();
 })();
