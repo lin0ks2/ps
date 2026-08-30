@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 CHANNELS = {
-    "uk": "UCo_Srxy3jgF4PbuxgldLpWA",
+    "uk": "UCo_Srxy3jqF4PbuxgldLpWA",
     "ru": "UChUFZoc6nnrzqPCsKQx5xmw",
 }
 LIMIT = 3
