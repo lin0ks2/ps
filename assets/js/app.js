@@ -72,6 +72,11 @@
       const value = translations[lang][el.dataset.i18n];
       if (value != null) el.innerHTML = value;
     });
+    const legalLang = lang === 'uk' ? 'uk' : 'ru';
+    document.querySelectorAll('[data-legal-link]').forEach(link => {
+      const doc = link.dataset.legalLink;
+      if (doc) link.href = `./legal/${doc}.${legalLang}.html`;
+    });
     localStorage.setItem('moyamova-lang', lang);
   }
 
