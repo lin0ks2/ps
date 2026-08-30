@@ -2,6 +2,12 @@
   const config = window.MOYAMOVA_CONFIG || {};
   const trainerUrl = config.trainerUrl || 'https://moyamova.online/';
 
+  function trackEvent(name, params = {}) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params);
+    }
+  }
+
   const translations = {
     ru: {
       navTrainer: 'Тренажёр', navHelp: 'Помощь', eyebrow: 'Немецкий без лишней теории',
@@ -69,17 +75,27 @@
 
   function openTrainer(event) {
     event.preventDefault();
+    const link = event.currentTarget;
+    const targetUrl = link?.href || trainerUrl;
+    const location = link?.closest('.hero') ? 'hero' : (link?.closest('.final-cta') ? 'final_cta' : 'other');
+
+    trackEvent('trainer_open', {
+      location,
+      device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+      language: document.documentElement.dataset.lang || 'ru'
+    });
+
     const isSmall = window.matchMedia('(max-width: 720px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isSmall) {
-      window.open(trainerUrl, '_blank', 'noopener');
+      window.open(targetUrl, '_blank', 'noopener');
       return;
     }
     const width = 430;
     const height = Math.min(820, Math.max(650, window.screen.availHeight - 80));
     const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
     const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
-    const popup = window.open(trainerUrl, 'moyamova_trainer', `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
-    if (!popup) window.open(trainerUrl, '_blank', 'noopener');
+    const popup = window.open(targetUrl, 'moyamova_trainer', `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    if (!popup) window.open(targetUrl, '_blank', 'noopener');
   }
 
   document.querySelectorAll('[data-open-trainer]').forEach(link => {
@@ -104,7 +120,11 @@
     localStorage.setItem('moyamova-lang', lang);
   }
 
-  document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.langBtn)));
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.addEventListener('click', () => {
+    const lang = btn.dataset.langBtn;
+    trackEvent('language_change', { language: lang });
+    setLanguage(lang);
+  }));
   setLanguage(localStorage.getItem('moyamova-lang') || (navigator.language?.toLowerCase().startsWith('uk') ? 'uk' : 'ru'));
 
   function setupChannelLink(code) {
@@ -142,7 +162,7 @@
         ? new Intl.DateTimeFormat(document.documentElement.lang === 'uk' ? 'uk-UA' : 'ru-RU', {day:'2-digit', month:'short'}).format(date)
         : '';
 
-      return `<a class="video-card${index === 0 ? ' video-card-main' : ''}" href="${url}" target="_blank" rel="noopener" aria-label="${title}">
+      return `<a class="video-card${index === 0 ? ' video-card-main' : ''}" data-youtube-video="${code}" href="${url}" target="_blank" rel="noopener" aria-label="${title}">
         <span class="video-thumb">
           <img src="${escapeHtml(thumb)}" alt="" loading="lazy">
           <span class="video-play" aria-hidden="true">▶</span>
@@ -177,7 +197,7 @@
         ? (document.documentElement.lang === 'uk' ? `${count} відео` : `${count} видео`)
         : 'YouTube';
 
-      return `<a class="playlist-card" href="${escapeHtml(url)}" target="_blank" rel="noopener" aria-label="${title}">
+      return `<a class="playlist-card" data-youtube-playlist="${code}" href="${escapeHtml(url)}" target="_blank" rel="noopener" aria-label="${title}">
         <span class="playlist-thumb">
           ${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : '<span class="playlist-thumb-fallback">MOYAMOVA</span>'}
           <span class="playlist-layer" aria-hidden="true"></span>
@@ -217,6 +237,52 @@
       link.hidden = false;
     });
   }
+
+  document.addEventListener('click', event => {
+    const target = event.target.closest('a');
+    if (!target) return;
+
+    const language = document.documentElement.dataset.lang || 'ru';
+
+    if (target.matches('[data-channel-link]')) {
+      trackEvent('youtube_channel_click', {
+        channel: target.dataset.channelLink || 'unknown',
+        location: target.closest('.playlist-language') ? 'playlists' : 'channel_card',
+        language
+      });
+      return;
+    }
+
+    if (target.matches('[data-youtube-video]')) {
+      trackEvent('youtube_video_click', { channel: target.dataset.youtubeVideo, language });
+      return;
+    }
+
+    if (target.matches('[data-youtube-playlist]')) {
+      trackEvent('youtube_playlist_click', { channel: target.dataset.youtubePlaylist, language });
+      return;
+    }
+
+    if (target.matches('[data-viber-link], [data-viber-footer]')) {
+      trackEvent('viber_click', { location: target.matches('[data-viber-footer]') ? 'footer' : 'community', language });
+      return;
+    }
+
+    if (target.closest('#beta-test')) {
+      trackEvent('beta_test_click', { language });
+      return;
+    }
+
+    if (target.getAttribute('href') === './help/') {
+      const location = target.closest('.site-header') ? 'header' : (target.closest('.footer') ? 'footer' : 'help_strip');
+      trackEvent('help_open', { location, language });
+      return;
+    }
+
+    if (!target.matches('[data-open-trainer]') && target.href && target.href.startsWith(trainerUrl)) {
+      trackEvent('trainer_open', { location: 'footer', device: window.innerWidth < 768 ? 'mobile' : 'desktop', language });
+    }
+  });
 
   setupChannelLink('uk');
   setupChannelLink('ru');
