@@ -29,6 +29,8 @@
       viberTitle: 'Присоединяйся к сообществу MOYAMOVA.', viberText: 'Новости проекта, обновления тренажёра и связь с MOYAMOVA — в одной группе.', joinViber: 'Открыть Viber',
       helpKicker: 'MOYAMOVA как приложение', helpTitle: 'Добавь тренажёр на главный экран телефона.',
       helpText: 'Короткая инструкция для iPhone / iPad и Android, плюс ответы по использованию MOYAMOVA.', openHelp: 'Открыть помощь',
+      betaKicker: 'Бета-тест MOYAMOVA', betaTitle: 'Хотите помочь MOYAMOVA стать лучше?',
+      betaText: 'Присоединяйтесь к бета-тестированию новых функций и версий приложения.', betaButton: 'Стать бета-тестером',
       ctaKicker: 'Можно начать прямо сейчас', ctaTitle: 'Открой MOYAMOVA и попробуй одну сессию.',
       footerText: 'Немецкий — меньше теории, больше практики.', trainerLink: 'Тренажёр', privacy: 'Политика конфиденциальности', terms: 'Условия использования'
     },
@@ -58,6 +60,8 @@
       viberTitle: 'Приєднуйся до спільноти MOYAMOVA.', viberText: 'Новини проєкту, оновлення тренажера та зв’язок із MOYAMOVA — в одній групі.', joinViber: 'Відкрити Viber',
       helpKicker: 'MOYAMOVA як застосунок', helpTitle: 'Додай тренажер на головний екран телефона.',
       helpText: 'Коротка інструкція для iPhone / iPad та Android, а також відповіді щодо використання MOYAMOVA.', openHelp: 'Відкрити допомогу',
+      betaKicker: 'Бета-тест MOYAMOVA', betaTitle: 'Хочете допомогти MOYAMOVA стати кращою?',
+      betaText: 'Приєднуйтеся до бета-тестування нових функцій і версій застосунку.', betaButton: 'Стати бета-тестером',
       ctaKicker: 'Можна почати прямо зараз', ctaTitle: 'Відкрий MOYAMOVA і спробуй одну сесію.',
       footerText: 'Німецька — менше теорії, більше практики.', trainerLink: 'Тренажер', privacy: 'Політика конфіденційності', terms: 'Умови використання'
     }
@@ -87,25 +91,6 @@
     if (!translations[lang]) lang = 'ru';
     document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
     document.documentElement.dataset.lang = lang;
-    const seo = lang === 'uk' ? {
-      title: 'MOYAMOVA — тренажер німецької мови | Слова, артиклі та прийменники',
-      description: 'Безкоштовний тренажер німецької мови MOYAMOVA: вивчайте слова A1–B2, тренуйте der, die, das і німецькі прийменники. Без реклами — просто у браузері.',
-      ogTitle: 'MOYAMOVA — тренажер німецької мови',
-      ogDescription: 'Слова A1–B2, der/die/das і німецькі прийменники. Безкоштовно, без реклами — практикуйтеся просто у браузері.'
-    } : {
-      title: 'MOYAMOVA — тренажёр немецкого языка | Слова, артикли и предлоги',
-      description: 'Бесплатный тренажёр немецкого языка MOYAMOVA: учите слова A1–B2, тренируйте der, die, das и немецкие предлоги. Без рекламы — прямо в браузере.',
-      ogTitle: 'MOYAMOVA — тренажёр немецкого языка',
-      ogDescription: 'Слова A1–B2, der/die/das и немецкие предлоги. Бесплатно, без рекламы — начинайте практиковаться прямо в браузере.'
-    };
-    document.title = seo.title;
-    const setMeta = (selector, value) => { const el = document.querySelector(selector); if (el) el.setAttribute('content', value); };
-    setMeta('meta[name=description]', seo.description);
-    setMeta('meta[property=\"og:title\"]', seo.ogTitle);
-    setMeta('meta[property=\"og:description\"]', seo.ogDescription);
-    setMeta('meta[property=\"og:locale\"]', lang === 'uk' ? 'uk_UA' : 'ru_RU');
-    setMeta('meta[name=\"twitter:title\"]', seo.ogTitle);
-    setMeta('meta[name=\"twitter:description\"]', seo.ogDescription);
     document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.classList.toggle('is-active', btn.dataset.langBtn === lang));
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const value = translations[lang][el.dataset.i18n];
