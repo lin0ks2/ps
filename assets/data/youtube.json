@@ -1,7 +1,26 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-08-30T19:18:52.538912+00:00",
   "channels": {
     "uk": [],
-    "ru": []
+    "ru": [
+      {
+        "id": "X4J9Z7nYq7k",
+        "title": "Думаешь, ты знаешь глагол BRINGEN? Проверь эти приставки! (Часть 2) 🤯 #shorts  #deutsch",
+        "published": "2026-08-30T07:00:38+00:00",
+        "thumbnail": "https://i1.ytimg.com/vi/X4J9Z7nYq7k/hqdefault.jpg"
+      },
+      {
+        "id": "yDRACunwnWk",
+        "title": "Прокачай свой немецкий! Чистая лексика А2: глаголы, которые ты обязан знать",
+        "published": "2026-08-29T15:00:42+00:00",
+        "thumbnail": "https://i2.ytimg.com/vi/yDRACunwnWk/hqdefault.jpg"
+      },
+      {
+        "id": "_CBwxLmZjlA",
+        "title": "Хватит переводить BRINGEN как «приносить»! Ты упускаешь главное 🤯 (Часть 1) #shorts  #deutsch",
+        "published": "2026-08-29T05:00:32+00:00",
+        "thumbnail": "https://i4.ytimg.com/vi/_CBwxLmZjlA/hqdefault.jpg"
+      }
+    ]
   }
 }
