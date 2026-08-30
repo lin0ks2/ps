@@ -142,3 +142,14 @@
     margin-top:18px;
   }
 }
+
+
+/* Beta tester CTA */
+.beta-section{padding-top:74px}
+.beta-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding:28px 30px;border-radius:28px;background:linear-gradient(135deg,#eefbf9,#f1f7ff);border:1px solid #d9eaec}
+.beta-icon{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#0fc6b6,#44baf0);color:#fff;display:grid;place-items:center;font-size:30px;font-weight:900;box-shadow:0 12px 25px rgba(30,170,180,.18)}
+.beta-card h2{font-size:clamp(27px,3vw,39px);line-height:1.03;letter-spacing:-.04em;margin:2px 0 8px}
+.beta-card p:not(.kicker){margin:0;color:#71878d;font-size:13px;line-height:1.55}
+.beta-card .btn{white-space:nowrap}
+@media(max-width:900px){.beta-card{grid-template-columns:auto 1fr}.beta-card .btn{grid-column:1/-1}}
+@media(max-width:640px){.beta-section{padding-top:56px}.beta-card{grid-template-columns:1fr;text-align:center;padding:25px 20px}.beta-icon{margin:auto}.beta-card .btn{width:100%}}
