@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T20:02:45.630907+00:00",
+  "updatedAt": "2026-08-30T20:10:36.897077+00:00",
   "channels": {
     "uk": {
       "videos": [
@@ -22,7 +22,43 @@
           "thumbnail": "https://i3.ytimg.com/vi/2ZYwrs4tf5Q/hqdefault.jpg"
         }
       ],
-      "playlists": []
+      "playlists": [
+        {
+          "id": "PLEoHL49v2nok",
+          "title": "Німецькі слова А1 по частинах мови | DE UA",
+          "thumbnail": "https://i.ytimg.com/vi/zoGBQ5ufF9g/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDIIS9a2VfYYOiFWUlZHf8izTy7UA",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLEoHL49v2nok"
+        },
+        {
+          "id": "PLNclOnNYO6fc",
+          "title": "Німецька мова А1 по темах: Вся лексика для початківців 🇩🇪",
+          "thumbnail": "https://i.ytimg.com/vi/o8zAy_UMclo/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDihgZdh5YDLXZpXeIKm3l1IHe5wA",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLNclOnNYO6fc"
+        },
+        {
+          "id": "PLXCS3yNTDs9M",
+          "title": "Сімейства німецьких дієслів | Deutsch Shorts",
+          "thumbnail": "https://i.ytimg.com/vi/I4WfafpbMYI/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBs9ySKzQe9BjjXg6et10Fnwx94kQ",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLXCS3yNTDs9M"
+        },
+        {
+          "id": "PLLkxyBA6vBgE",
+          "title": "Німецька А2 : Deutsch_A2",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLkxyBA6vBgE/studio_square_thumbnail.jpg?sqp=CMTV0dQG-oaymwEICIAKENAFSFqi85f_AwYInbi91AY=&rs=AOn4CLCOObLUSa64_tMrJRRHik9EQpPHzA",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLLkxyBA6vBgE"
+        },
+        {
+          "id": "PLCgV7MELMub4",
+          "title": "Німецька A1 : Deutsch_A1",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLCgV7MELMub4/studio_square_thumbnail.jpg?sqp=CMWI0tQG-oaymwEICIAKENAFSFqi85f_AwYIvLm91AY=&rs=AOn4CLBMB7EfwrtaHkCKSKByMIQ-IXSIOg",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLCgV7MELMub4"
+        }
+      ]
     },
     "ru": {
       "videos": [
@@ -45,7 +81,43 @@
           "thumbnail": "https://i4.ytimg.com/vi/_CBwxLmZjlA/hqdefault.jpg"
         }
       ],
-      "playlists": []
+      "playlists": [
+        {
+          "id": "PLNDCUhM4F0h8",
+          "title": "Семейства немецких глаголов | Deutsch Shorts",
+          "thumbnail": "https://i.ytimg.com/vi/X4J9Z7nYq7k/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBiJwEcXZsGU5GaeWDFCXznqgXx9w",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLNDCUhM4F0h8"
+        },
+        {
+          "id": "PLLC3q2I8iUhk",
+          "title": "Немецкий A1 | Слова по частям речи DE",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLC3q2I8iUhk/studio_square_thumbnail.jpg?sqp=CLLy0dQG-oaymwEICIAKENAFSFqi85f_AwYI58K61AY=&rs=AOn4CLBUuhTzA6CmSYv0YDJBPf_tpgLp2g",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLLC3q2I8iUhk"
+        },
+        {
+          "id": "PLYU_y1ToHQ5g",
+          "title": "Немецкий A1 | Слова по темам DE",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLYU_y1ToHQ5g/studio_square_thumbnail.jpg?sqp=CNb90dQG-oaymwEICIAKENAFSFqi85f_AwYIk8O61AY=&rs=AOn4CLD74nWgGH5h_cvdysC666SqsT160Q",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLYU_y1ToHQ5g"
+        },
+        {
+          "id": "PLTRc0OtgN_-0",
+          "title": "Немецкий A2 : Deutsch_A2",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLTRc0OtgN_-0/studio_square_thumbnail.jpg?sqp=CLiT0tQG-oaymwEICIAKENAFSFqi85f_AwYI8pa71AY=&rs=AOn4CLAqAd03My4qDx1RQPlPO3V3nIKuYA",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLTRc0OtgN_-0"
+        },
+        {
+          "id": "PLFmrYe5tv-xo",
+          "title": "Немецкий A1 : Deutsch_A1",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLFmrYe5tv-xo/studio_square_thumbnail.jpg?sqp=CIvX0dQG-oaymwEICIAKENAFSFqi85f_AwYIhcW61AY=&rs=AOn4CLB6E5w4yReRHoGpZMXLDDebBVmYdg",
+          "videoCount": null,
+          "url": "https://www.youtube.com/playlist?list=PLFmrYe5tv-xo"
+        }
+      ]
     }
   }
 }
