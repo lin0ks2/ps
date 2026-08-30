@@ -87,6 +87,25 @@
     if (!translations[lang]) lang = 'ru';
     document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
     document.documentElement.dataset.lang = lang;
+    const seo = lang === 'uk' ? {
+      title: 'MOYAMOVA — тренажер німецької мови | Слова, артиклі та прийменники',
+      description: 'Безкоштовний тренажер німецької мови MOYAMOVA: вивчайте слова A1–B2, тренуйте der, die, das і німецькі прийменники. Без реклами — просто у браузері.',
+      ogTitle: 'MOYAMOVA — тренажер німецької мови',
+      ogDescription: 'Слова A1–B2, der/die/das і німецькі прийменники. Безкоштовно, без реклами — практикуйтеся просто у браузері.'
+    } : {
+      title: 'MOYAMOVA — тренажёр немецкого языка | Слова, артикли и предлоги',
+      description: 'Бесплатный тренажёр немецкого языка MOYAMOVA: учите слова A1–B2, тренируйте der, die, das и немецкие предлоги. Без рекламы — прямо в браузере.',
+      ogTitle: 'MOYAMOVA — тренажёр немецкого языка',
+      ogDescription: 'Слова A1–B2, der/die/das и немецкие предлоги. Бесплатно, без рекламы — начинайте практиковаться прямо в браузере.'
+    };
+    document.title = seo.title;
+    const setMeta = (selector, value) => { const el = document.querySelector(selector); if (el) el.setAttribute('content', value); };
+    setMeta('meta[name=description]', seo.description);
+    setMeta('meta[property=\"og:title\"]', seo.ogTitle);
+    setMeta('meta[property=\"og:description\"]', seo.ogDescription);
+    setMeta('meta[property=\"og:locale\"]', lang === 'uk' ? 'uk_UA' : 'ru_RU');
+    setMeta('meta[name=\"twitter:title\"]', seo.ogTitle);
+    setMeta('meta[name=\"twitter:description\"]', seo.ogDescription);
     document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.classList.toggle('is-active', btn.dataset.langBtn === lang));
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const value = translations[lang][el.dataset.i18n];
