@@ -24,6 +24,7 @@
       <nav class="header-actions" aria-label="Основная навигация">
         <a class="nav-link desktop-only" href="#trainer" data-i18n="navTrainer">Тренажёр</a>
         <a class="nav-link desktop-only" href="#youtube">YouTube</a>
+        <a class="nav-link desktop-only" href="./help/" data-i18n="navHelp">Помощь</a>
         <div class="lang-switch" aria-label="Язык сайта">
           <button class="lang-btn is-active" type="button" data-lang-btn="ru">RU</button>
           <button class="lang-btn" type="button" data-lang-btn="uk">UA</button>
@@ -44,11 +45,6 @@
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <p class="hero-note" data-i18n="heroNote">Бесплатно · без установки</p>
-        </div>
-        <div class="hero-points" aria-label="Преимущества">
-          <span><b>01</b><span data-i18n="point1">Слова и переводы</span></span>
-          <span><b>02</b><span data-i18n="point2">Артикли и грамматика</span></span>
-          <span><b>03</b><span data-i18n="point3">Повторение ошибок</span></span>
         </div>
       </div>
 
@@ -163,6 +159,101 @@
             </div>
           </article>
         </div>
+
+        <div class="publish-block">
+          <div class="publish-head">
+            <div>
+              <p class="kicker" data-i18n="scheduleKicker">График публикаций</p>
+              <h3 data-i18n="scheduleTitle">Новый немецкий — почти каждый день.</h3>
+            </div>
+            <p data-i18n="scheduleNote">Русский канал сейчас активно наполняется. После синхронизации контента оба канала перейдут на стабильный график: 2 длинных видео в неделю + Shorts каждый день.</p>
+          </div>
+
+          <div class="schedule-grid">
+            <article class="schedule-card">
+              <div class="schedule-card-head">
+                <span class="flag flag-ua" aria-hidden="true"></span>
+                <strong data-i18n="scheduleUa">Украинский канал</strong>
+              </div>
+              <div class="schedule-row">
+                <span data-i18n="shortsLabel">Shorts</span>
+                <b data-i18n="shortsTime">ежедневно · 07:00<br>выходные · 09:00</b>
+              </div>
+              <div class="schedule-row">
+                <span data-i18n="longLabel">Большие видео</span>
+                <b data-i18n="uaLongTime">вт · пт · 17:00</b>
+              </div>
+            </article>
+
+            <article class="schedule-card">
+              <div class="schedule-card-head">
+                <span class="flag flag-ru" aria-hidden="true"></span>
+                <strong data-i18n="scheduleRu">Русский канал</strong>
+              </div>
+              <div class="schedule-row">
+                <span data-i18n="shortsLabel">Shorts</span>
+                <b data-i18n="shortsTime">ежедневно · 07:00<br>выходные · 09:00</b>
+              </div>
+              <div class="schedule-row">
+                <span data-i18n="longLabel">Большие видео</span>
+                <b data-i18n="ruLongTime">пн · вт · чт · пт · 17:00</b>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="playlist-block">
+          <div class="playlist-head">
+            <div>
+              <p class="kicker" data-i18n="playlistKicker">Все подборки</p>
+              <h3 data-i18n="playlistTitle">Выбери тему и продолжай на YouTube.</h3>
+            </div>
+            <p data-i18n="playlistIntro">Плейлисты обновляются автоматически — новые подборки появятся здесь вместе с обложками.</p>
+          </div>
+
+          <div class="playlist-language">
+            <div class="playlist-language-head">
+              <strong><span class="flag flag-ua" aria-hidden="true"></span><span data-i18n="playlistUa">Українською</span></strong>
+              <a data-channel-link="uk" href="#" class="text-link" target="_blank" rel="noopener"><span data-i18n="allOnYoutube">Все на YouTube</span> ↗</a>
+            </div>
+            <div class="playlist-grid" data-playlist-slot="uk">
+              <div class="playlist-empty" data-i18n="playlistLoading">Загружаем плейлисты…</div>
+            </div>
+          </div>
+
+          <div class="playlist-language">
+            <div class="playlist-language-head">
+              <strong><span class="flag flag-ru" aria-hidden="true"></span><span data-i18n="playlistRu">По-русски</span></strong>
+              <a data-channel-link="ru" href="#" class="text-link" target="_blank" rel="noopener"><span data-i18n="allOnYoutube">Все на YouTube</span> ↗</a>
+            </div>
+            <div class="playlist-grid" data-playlist-slot="ru">
+              <div class="playlist-empty" data-i18n="playlistLoading">Загружаем плейлисты…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-section shell" id="community" hidden data-viber-block>
+      <div class="community-card">
+        <div class="community-icon">V</div>
+        <div>
+          <p class="kicker">MOYAMOVA · Viber</p>
+          <h2 data-i18n="viberTitle">Присоединяйся к сообществу MOYAMOVA.</h2>
+          <p data-i18n="viberText">Новости проекта, обновления тренажёра и связь с MOYAMOVA — в одной группе.</p>
+        </div>
+        <a class="btn btn-dark" href="#" target="_blank" rel="noopener" data-viber-link><span data-i18n="joinViber">Открыть Viber</span><span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="help-strip shell">
+      <div class="help-strip-card">
+        <div>
+          <p class="kicker" data-i18n="helpKicker">MOYAMOVA как приложение</p>
+          <h2 data-i18n="helpTitle">Добавь тренажёр на главный экран телефона.</h2>
+          <p data-i18n="helpText">Короткая инструкция для iPhone / iPad и Android, плюс ответы по использованию MOYAMOVA.</p>
+        </div>
+        <a class="btn btn-light" href="./help/" data-i18n="openHelp">Открыть помощь</a>
       </div>
     </section>
 
@@ -187,6 +278,8 @@
       <div class="footer-links">
         <a href="https://moyamova.online/" target="_blank" rel="noopener" data-i18n="trainerLink">Тренажёр</a>
         <a href="#youtube">YouTube</a>
+        <a href="./help/" data-i18n="navHelp">Помощь</a>
+        <a href="#" target="_blank" rel="noopener" data-viber-footer hidden>Viber</a>
       </div>
       <div class="footer-links">
         <a href="./legal/privacy.ru.html" data-legal-link="privacy" data-i18n="privacy">Политика конфиденциальности</a>

@@ -36,3 +36,16 @@ Mobile: opens the trainer in a normal new browser tab because mobile browsers do
 ## Before production
 
 Review and replace the inherited legal text where required. It was carried over from the old landing project and should not be treated as final legal advice.
+
+
+## YouTube
+
+Последние 3 ролика каждого канала хранятся в `assets/data/youtube.json`. GitHub Action `.github/workflows/update-youtube.yml` обновляет файл из официальных YouTube RSS-фидов при push, вручную и каждые 6 часов. API-ключ не нужен. Карточки открывают ролики непосредственно на YouTube, поэтому ограничения iframe/embed больше не ломают блок.
+
+
+## v1.5: playlists, schedule, help, Viber
+
+- The landing shows the current publication schedule for RU/UA channels.
+- `scripts/update_youtube.py` now refreshes the latest videos **and public playlist cards with covers** into `assets/data/youtube.json`.
+- `help/index.html` contains iOS/iPadOS and Android home-screen installation instructions and a prepared section for the full trainer manual.
+- Set `viberUrl` in `assets/js/config.js` when the public Viber invite link is available. The Viber block and footer link stay hidden until that value is present.

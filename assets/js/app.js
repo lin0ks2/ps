@@ -4,7 +4,7 @@
 
   const translations = {
     ru: {
-      navTrainer: 'Тренажёр', eyebrow: 'Немецкий без лишней теории',
+      navTrainer: 'Тренажёр', navHelp: 'Помощь', eyebrow: 'Немецкий без лишней теории',
       heroTitle: 'Учи немецкий<br><span>практикой.</span>',
       heroLead: 'MOYAMOVA — простой тренажёр слов, артиклей и конструкций. Открывается прямо в браузере.',
       openTrainer: 'Запустить тренажёр', heroNote: 'Бесплатно · без установки',
@@ -19,11 +19,21 @@
       youtubeTitle: 'Смотри. Запоминай. Возвращайся к практике.', youtubeIntro: 'Два канала с немецким: выбирайте удобный язык объяснений.',
       videoPending: 'Загружаем последние видео…', videoConfig: 'Если список ещё не обновился — откройте канал напрямую.',
       channelUkText: 'Немецкий с украинским переводом', channelRuText: 'Немецкий с русским переводом', openChannel: 'Открыть канал',
+      scheduleKicker: 'График публикаций', scheduleTitle: 'Новый немецкий — почти каждый день.',
+      scheduleNote: 'Русский канал сейчас активно наполняется. После синхронизации контента оба канала перейдут на стабильный график: 2 длинных видео в неделю + Shorts каждый день.',
+      scheduleUa: 'Украинский канал', scheduleRu: 'Русский канал', shortsLabel: 'Shorts', shortsTime: 'ежедневно · 07:00<br>выходные · 09:00',
+      longLabel: 'Большие видео', uaLongTime: 'вт · пт · 17:00', ruLongTime: 'пн · вт · чт · пт · 17:00',
+      playlistKicker: 'Все подборки', playlistTitle: 'Выбери тему и продолжай на YouTube.',
+      playlistIntro: 'Плейлисты обновляются автоматически — новые подборки появятся здесь вместе с обложками.',
+      playlistUa: 'Українською', playlistRu: 'По-русски', allOnYoutube: 'Все на YouTube', playlistLoading: 'Загружаем плейлисты…',
+      viberTitle: 'Присоединяйся к сообществу MOYAMOVA.', viberText: 'Новости проекта, обновления тренажёра и связь с MOYAMOVA — в одной группе.', joinViber: 'Открыть Viber',
+      helpKicker: 'MOYAMOVA как приложение', helpTitle: 'Добавь тренажёр на главный экран телефона.',
+      helpText: 'Короткая инструкция для iPhone / iPad и Android, плюс ответы по использованию MOYAMOVA.', openHelp: 'Открыть помощь',
       ctaKicker: 'Можно начать прямо сейчас', ctaTitle: 'Открой MOYAMOVA и попробуй одну сессию.',
       footerText: 'Немецкий — меньше теории, больше практики.', trainerLink: 'Тренажёр', privacy: 'Политика конфиденциальности', terms: 'Условия использования'
     },
     uk: {
-      navTrainer: 'Тренажер', eyebrow: 'Німецька без зайвої теорії',
+      navTrainer: 'Тренажер', navHelp: 'Допомога', eyebrow: 'Німецька без зайвої теорії',
       heroTitle: 'Вивчай німецьку<br><span>на практиці.</span>',
       heroLead: 'MOYAMOVA — простий тренажер слів, артиклів і конструкцій. Відкривається просто у браузері.',
       openTrainer: 'Запустити тренажер', heroNote: 'Безкоштовно · без встановлення',
@@ -38,6 +48,16 @@
       youtubeTitle: 'Дивись. Запам’ятовуй. Повертайся до практики.', youtubeIntro: 'Два канали з німецькою: обирайте зручну мову пояснень.',
       videoPending: 'Завантажуємо останні відео…', videoConfig: 'Якщо список ще не оновився — відкрийте канал напряму.',
       channelUkText: 'Німецька з українським перекладом', channelRuText: 'Німецька з російським перекладом', openChannel: 'Відкрити канал',
+      scheduleKicker: 'Графік публікацій', scheduleTitle: 'Нова німецька — майже щодня.',
+      scheduleNote: 'Російський канал зараз активно наповнюється. Після синхронізації контенту обидва канали перейдуть на стабільний графік: 2 довгі відео на тиждень + Shorts щодня.',
+      scheduleUa: 'Український канал', scheduleRu: 'Російський канал', shortsLabel: 'Shorts', shortsTime: 'щодня · 07:00<br>вихідні · 09:00',
+      longLabel: 'Довгі відео', uaLongTime: 'вт · пт · 17:00', ruLongTime: 'пн · вт · чт · пт · 17:00',
+      playlistKicker: 'Усі добірки', playlistTitle: 'Обери тему та продовжуй на YouTube.',
+      playlistIntro: 'Плейлисти оновлюються автоматично — нові добірки з’являться тут разом з обкладинками.',
+      playlistUa: 'Українською', playlistRu: 'Російською', allOnYoutube: 'Усе на YouTube', playlistLoading: 'Завантажуємо плейлисти…',
+      viberTitle: 'Приєднуйся до спільноти MOYAMOVA.', viberText: 'Новини проєкту, оновлення тренажера та зв’язок із MOYAMOVA — в одній групі.', joinViber: 'Відкрити Viber',
+      helpKicker: 'MOYAMOVA як застосунок', helpTitle: 'Додай тренажер на головний екран телефона.',
+      helpText: 'Коротка інструкція для iPhone / iPad та Android, а також відповіді щодо використання MOYAMOVA.', openHelp: 'Відкрити допомогу',
       ctaKicker: 'Можна почати прямо зараз', ctaTitle: 'Відкрий MOYAMOVA і спробуй одну сесію.',
       footerText: 'Німецька — менше теорії, більше практики.', trainerLink: 'Тренажер', privacy: 'Політика конфіденційності', terms: 'Умови використання'
     }
@@ -131,16 +151,66 @@
     }).join('');
   }
 
+
+  function renderPlaylists(code, playlists) {
+    const slot = document.querySelector(`[data-playlist-slot="${code}"]`);
+    if (!slot) return;
+    if (!Array.isArray(playlists) || !playlists.length) {
+      slot.innerHTML = `<div class="playlist-empty">${translations[document.documentElement.dataset.lang || 'ru'].playlistLoading}</div>`;
+      return;
+    }
+
+    slot.innerHTML = playlists.map(playlist => {
+      const id = encodeURIComponent(playlist.id || '');
+      const url = playlist.url || `https://www.youtube.com/playlist?list=${id}`;
+      const title = escapeHtml(playlist.title || 'MOYAMOVA');
+      const thumb = escapeHtml(playlist.thumbnail || '');
+      const count = Number.isFinite(Number(playlist.videoCount)) && Number(playlist.videoCount) > 0
+        ? Number(playlist.videoCount)
+        : null;
+      const countLabel = count
+        ? (document.documentElement.lang === 'uk' ? `${count} відео` : `${count} видео`)
+        : 'YouTube';
+
+      return `<a class="playlist-card" href="${escapeHtml(url)}" target="_blank" rel="noopener" aria-label="${title}">
+        <span class="playlist-thumb">
+          ${thumb ? `<img src="${thumb}" alt="" loading="lazy">` : '<span class="playlist-thumb-fallback">MOYAMOVA</span>'}
+          <span class="playlist-layer" aria-hidden="true"></span>
+          <span class="playlist-icon" aria-hidden="true">▶</span>
+        </span>
+        <span class="playlist-meta">
+          <strong>${title}</strong>
+          <small>${escapeHtml(countLabel)}</small>
+        </span>
+      </a>`;
+    }).join('');
+  }
+
   async function loadLatestVideos() {
     try {
       const response = await fetch('./assets/data/youtube.json', {cache: 'no-store'});
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
-      renderVideos('uk', data.channels?.uk || []);
-      renderVideos('ru', data.channels?.ru || []);
+      const ukData = data.channels?.uk || {};
+      const ruData = data.channels?.ru || {};
+      renderVideos('uk', Array.isArray(ukData) ? ukData : (ukData.videos || []));
+      renderVideos('ru', Array.isArray(ruData) ? ruData : (ruData.videos || []));
+      renderPlaylists('uk', Array.isArray(ukData) ? [] : (ukData.playlists || []));
+      renderPlaylists('ru', Array.isArray(ruData) ? [] : (ruData.playlists || []));
     } catch (error) {
       console.warn('MOYAMOVA: youtube.json is not available yet.', error);
     }
+  }
+
+
+  const viberUrl = (config.viberUrl || '').trim();
+  if (viberUrl) {
+    const block = document.querySelector('[data-viber-block]');
+    if (block) block.hidden = false;
+    document.querySelectorAll('[data-viber-link], [data-viber-footer]').forEach(link => {
+      link.href = viberUrl;
+      link.hidden = false;
+    });
   }
 
   setupChannelLink('uk');

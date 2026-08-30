@@ -3,6 +3,8 @@
 */
 window.MOYAMOVA_CONFIG = {
   trainerUrl: 'https://moyamova.online/',
+  // Paste the public MOYAMOVA Viber group invite URL here when ready.
+  viberUrl: '',
   channels: {
     uk: {
       channelId: 'UCo_Srxy3jqF4PbuxgldLpWA',

@@ -1,4 +1,4 @@
-name: Update YouTube videos
+name: Update YouTube content
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       - name: Refresh YouTube data
         run: python scripts/update_youtube.py
 
-      - name: Commit changed video list
+      - name: Commit changed YouTube data
         run: |
           if git diff --quiet -- assets/data/youtube.json; then
             echo "No YouTube changes"

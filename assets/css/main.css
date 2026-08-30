@@ -26,3 +26,73 @@
 .video-card-main .video-meta strong{font-size:15px;-webkit-line-clamp:3}
 .video-meta small{font-size:10px;color:#8ba0a5;text-transform:uppercase;letter-spacing:.06em;font-weight:750}
 @media(max-width:640px){.video-placeholder.has-videos{gap:8px}.video-card{padding:6px;border-radius:13px}.video-card-main{grid-template-columns:1fr;gap:8px}.video-thumb{border-radius:9px}.video-card-main .video-meta strong,.video-meta strong{font-size:12px}.video-play{width:38px;height:28px;border-radius:8px;font-size:12px}}
+
+
+/* Publishing schedule */
+.publish-block{margin-top:54px;padding-top:46px;border-top:1px solid var(--line)}
+.publish-head,.playlist-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.62fr);gap:60px;align-items:end;margin-bottom:24px}
+.publish-head h3,.playlist-head h3{margin:0;font-size:clamp(28px,3vw,42px);line-height:1.03;letter-spacing:-.045em}
+.publish-head>p,.playlist-head>p{margin:0;font-size:13px;line-height:1.65;color:#748a90}
+.schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.schedule-card{border:1px solid var(--line);border-radius:22px;background:#fff;padding:22px;box-shadow:0 10px 30px rgba(36,78,88,.055)}
+.schedule-card-head{display:flex;align-items:center;gap:10px;margin-bottom:17px;font-size:14px}
+.schedule-card-head .flag{width:25px;height:17px}
+.schedule-row{display:flex;justify-content:space-between;gap:24px;padding:13px 0;border-top:1px solid #e7eff1;align-items:flex-start}
+.schedule-row span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#8ca0a5}
+.schedule-row b{text-align:right;font-size:12px;line-height:1.45}
+
+/* Playlists */
+.playlist-block{margin-top:60px}
+.playlist-language{margin-top:30px}
+.playlist-language-head{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:13px}
+.playlist-language-head>strong{display:flex;align-items:center;gap:10px;font-size:14px}
+.playlist-language-head .flag{width:24px;height:16px}
+.playlist-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.playlist-card{display:flex;min-width:0;flex-direction:column;gap:10px;padding:8px;border-radius:17px;border:1px solid var(--line);background:#fff;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.playlist-card:hover{transform:translateY(-3px);border-color:#c5dce0;box-shadow:0 14px 34px rgba(36,78,88,.11)}
+.playlist-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:11px;overflow:hidden;background:linear-gradient(135deg,#dff9f6,#dceffc)}
+.playlist-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.playlist-thumb-fallback{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:900;letter-spacing:.12em;color:#31555d}
+.playlist-layer{position:absolute;right:7px;top:7px;width:32px;height:24px;border-radius:6px;background:rgba(12,31,36,.72);box-shadow:-4px 4px 0 rgba(255,255,255,.45)}
+.playlist-icon{position:absolute;right:15px;top:12px;color:#fff;font-size:9px;z-index:2}
+.playlist-meta{display:flex;flex-direction:column;gap:5px;padding:0 3px 5px;min-width:0}
+.playlist-meta strong{font-size:12px;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.playlist-meta small{font-size:9px;color:#8da1a6;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.playlist-empty{grid-column:1/-1;padding:26px;border:1px dashed #cfdee1;border-radius:17px;text-align:center;font-size:12px;color:#8da1a6}
+
+/* Community + Help */
+.community-section{padding-top:74px}
+.community-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding:28px 30px;border-radius:28px;background:linear-gradient(135deg,#f0e9ff,#eef8ff);border:1px solid #ded8ef}
+.community-icon{width:64px;height:64px;border-radius:20px;background:#7360f2;color:#fff;display:grid;place-items:center;font-size:28px;font-weight:900;box-shadow:0 12px 25px rgba(115,96,242,.22)}
+.community-card h2,.help-strip-card h2{font-size:clamp(27px,3vw,39px);line-height:1.03;letter-spacing:-.04em;margin:2px 0 8px}
+.community-card p:not(.kicker),.help-strip-card p:not(.kicker){margin:0;color:#71878d;font-size:13px;line-height:1.55}
+.help-strip{padding-top:74px}
+.help-strip-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:32px;padding:30px 34px;border-radius:28px;background:#102329;color:#fff}
+.help-strip-card .kicker{color:#73e6da}
+.help-strip-card p:not(.kicker){color:#a9bdc2}
+.btn-light{background:#fff;color:#102329;border-color:#fff;white-space:nowrap}
+
+/* The old duplicate Hero point row is intentionally removed in v1.5. */
+.hero-points{display:none!important}
+
+@media(max-width:900px){
+  .publish-head,.playlist-head{grid-template-columns:1fr;gap:15px}
+  .playlist-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .community-card{grid-template-columns:auto 1fr}
+  .community-card .btn{grid-column:1/-1}
+}
+@media(max-width:640px){
+  .publish-block{margin-top:42px;padding-top:38px}
+  .publish-head h3,.playlist-head h3{font-size:32px}
+  .schedule-grid{grid-template-columns:1fr}
+  .schedule-card{border-radius:18px;padding:18px}
+  .playlist-block{margin-top:48px}
+  .playlist-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 2px 8px;gap:10px}
+  .playlist-card{min-width:76%;scroll-snap-align:start}
+  .playlist-language{margin-top:25px}
+  .community-section,.help-strip{padding-top:56px}
+  .community-card{grid-template-columns:1fr;text-align:center;padding:25px 20px}
+  .community-icon{margin:auto}
+  .help-strip-card{grid-template-columns:1fr;text-align:left;padding:27px 22px;border-radius:24px}
+  .help-strip-card .btn{width:100%}
+}
