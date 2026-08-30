@@ -100,3 +100,16 @@
 .channel-logo{width:58px;height:58px;flex:0 0 58px;display:block;object-fit:cover;border-radius:50%;border:1px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(25,55,65,.16)}
 .playlist-channel-logo{width:34px;height:34px;flex:0 0 34px;display:block;object-fit:cover;border-radius:50%;border:1px solid #d9e6e9;box-shadow:0 5px 13px rgba(25,55,65,.11)}
 @media(max-width:640px){.channel-logo{width:50px;height:50px;flex-basis:50px}.playlist-channel-logo{width:30px;height:30px;flex-basis:30px}}
+
+/* Mobile polish: keep trainer screenshots inside feature cards and compact footer. */
+@media(max-width:640px){
+  .feature{min-height:0;height:auto;padding-bottom:0}
+  .screen-crop,.feature-large .screen-crop{width:min(54%,210px);margin:22px auto -72px;flex:0 0 auto}
+  .feature{min-height:430px}
+  .crop-two,.crop-three{transform:none}
+  .footer{padding:30px 0 18px}
+  .footer-grid{gap:16px}
+  .footer-brand p{margin-top:10px}
+  .footer-links{gap:8px}
+  .footer-bottom{margin-top:20px;padding-top:14px}
+}
