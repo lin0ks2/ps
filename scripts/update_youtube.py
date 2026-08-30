@@ -16,7 +16,7 @@ CHANNELS = {
     "ru": "UChUFZoc6nnrzqPCsKQx5xmw",
 }
 VIDEO_LIMIT = 3
-PLAYLIST_LIMIT = 30
+PLAYLIST_LIMIT = 40
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "assets" / "data" / "youtube.json"
 
@@ -28,15 +28,17 @@ NS = {
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127 Safari/537.36"
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151 Safari/537.36"
     ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
 }
 
 
 def request_bytes(url: str) -> bytes:
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=30) as response:
+    with urllib.request.urlopen(req, timeout=35) as response:
         return response.read()
 
 
@@ -61,48 +63,52 @@ def fetch_videos(channel_id: str) -> list[dict]:
     return videos
 
 
-def extract_initial_data(page: str) -> dict:
-    patterns = [
-        r"var ytInitialData = ({.*?});</script>",
-        r'window\["ytInitialData"\]\s*=\s*({.*?});</script>',
-        r"ytInitialData\s*=\s*({.*?});</script>",
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, page, flags=re.S)
-        if match:
-            return json.loads(match.group(1))
-    raise RuntimeError("ytInitialData not found")
-
-
-def text_value(value: Any) -> str:
-    if not isinstance(value, dict):
-        return ""
-    if isinstance(value.get("simpleText"), str):
-        return value["simpleText"].strip()
-    runs = value.get("runs")
-    if isinstance(runs, list):
-        return "".join(str(run.get("text", "")) for run in runs if isinstance(run, dict)).strip()
-    return ""
-
-
-def thumbnail_value(value: Any) -> str:
-    if not isinstance(value, dict):
-        return ""
-    thumbs = value.get("thumbnails")
-    if not isinstance(thumbs, list) or not thumbs:
-        return ""
-    valid = [t for t in thumbs if isinstance(t, dict) and t.get("url")]
-    if not valid:
-        return ""
-    valid.sort(key=lambda t: int(t.get("width") or 0) * int(t.get("height") or 0))
-    return html.unescape(str(valid[-1]["url"]))
-
-
-def parse_count(text: str) -> int | None:
-    if not text:
+def decode_json_after_marker(page: str, marker: str) -> dict | None:
+    """Decode one JSON object after marker using JSONDecoder.raw_decode (brace-safe)."""
+    pos = page.find(marker)
+    if pos < 0:
         return None
-    digits = re.sub(r"\D+", "", text)
-    return int(digits) if digits else None
+    pos += len(marker)
+
+    # Skip whitespace, ':' and '=' until the first opening brace.
+    brace = page.find("{", pos)
+    if brace < 0:
+        return None
+
+    try:
+        value, _ = json.JSONDecoder().raw_decode(page[brace:])
+        return value if isinstance(value, dict) else None
+    except json.JSONDecodeError:
+        return None
+
+
+def extract_initial_data(page: str) -> dict:
+    # YouTube has used all of these forms over time.
+    markers = (
+        "var ytInitialData =",
+        "ytInitialData =",
+        'window["ytInitialData"] =',
+        "window['ytInitialData'] =",
+        '"ytInitialData":',
+    )
+    for marker in markers:
+        data = decode_json_after_marker(page, marker)
+        if data:
+            return data
+
+    # Fallback: sometimes the JSON is embedded after this assignment without spaces.
+    match = re.search(r"(?:var\s+)?ytInitialData\s*=", page)
+    if match:
+        brace = page.find("{", match.end())
+        if brace >= 0:
+            try:
+                value, _ = json.JSONDecoder().raw_decode(page[brace:])
+                if isinstance(value, dict):
+                    return value
+            except json.JSONDecodeError:
+                pass
+
+    raise RuntimeError("ytInitialData not found")
 
 
 def walk(value: Any):
@@ -115,62 +121,194 @@ def walk(value: Any):
             yield from walk(child)
 
 
+def text_value(value: Any) -> str:
+    if not isinstance(value, dict):
+        return ""
+    simple = value.get("simpleText")
+    if isinstance(simple, str):
+        return simple.strip()
+    runs = value.get("runs")
+    if isinstance(runs, list):
+        return "".join(
+            str(run.get("text", ""))
+            for run in runs
+            if isinstance(run, dict)
+        ).strip()
+    return ""
+
+
+def source_url(value: Any) -> str:
+    """Find the largest thumbnail URL anywhere under a renderer."""
+    candidates: list[tuple[int, str]] = []
+    for node in walk(value):
+        if not isinstance(node, dict):
+            continue
+        url = node.get("url")
+        if not isinstance(url, str):
+            continue
+        if not (
+            "ytimg.com" in url
+            or "ggpht.com" in url
+            or url.startswith("//")
+        ):
+            continue
+        area = 0
+        try:
+            area = int(node.get("width") or 0) * int(node.get("height") or 0)
+        except Exception:
+            area = 0
+        candidates.append((area, html.unescape(url)))
+    if not candidates:
+        return ""
+    candidates.sort(key=lambda x: x[0])
+    url = candidates[-1][1]
+    return "https:" + url if url.startswith("//") else url
+
+
+def parse_count(text: str) -> int | None:
+    if not text:
+        return None
+    match = re.search(r"(\d[\d\s.,]*)", text)
+    if not match:
+        return None
+    digits = re.sub(r"\D+", "", match.group(1))
+    return int(digits) if digits else None
+
+
+def renderer_title(renderer: dict) -> str:
+    # Common playlist renderers.
+    for key in ("title", "headline", "primaryText"):
+        title = text_value(renderer.get(key))
+        if title:
+            return title
+
+    # New lockup metadata model.
+    metadata = renderer.get("metadata")
+    if isinstance(metadata, dict):
+        for node in walk(metadata):
+            for key in ("title", "headline", "primaryText"):
+                title = text_value(node.get(key)) if isinstance(node, dict) else ""
+                if title:
+                    return title
+
+    # Last resort: look for text-bearing runs near this renderer.
+    for node in walk(renderer):
+        if not isinstance(node, dict):
+            continue
+        text = text_value(node)
+        if text and len(text) <= 180:
+            return text
+    return ""
+
+
+def playlist_id_from_renderer(renderer: dict) -> str:
+    for key in ("playlistId", "contentId"):
+        value = renderer.get(key)
+        if isinstance(value, str) and value:
+            return value
+
+    # Navigation endpoints often carry the playlist id even when the top-level renderer does not.
+    for node in walk(renderer):
+        if not isinstance(node, dict):
+            continue
+        value = node.get("playlistId")
+        if isinstance(value, str) and value:
+            return value
+        url = node.get("url")
+        if isinstance(url, str):
+            match = re.search(r"(?:[?&]list=|/playlist\?list=)([A-Za-z0-9_-]+)", url)
+            if match:
+                return match.group(1)
+    return ""
+
+
+def playlist_count_from_renderer(renderer: dict) -> int | None:
+    for key in ("videoCountText", "videoCount", "secondaryText", "metadata"):
+        value = renderer.get(key)
+        if isinstance(value, int):
+            return value
+        if isinstance(value, str):
+            count = parse_count(value)
+            if count is not None:
+                return count
+        if isinstance(value, dict):
+            count = parse_count(text_value(value))
+            if count is not None:
+                return count
+    return None
+
+
 def fetch_playlists(channel_id: str) -> list[dict]:
-    url = f"https://www.youtube.com/channel/{channel_id}/playlists"
-    page = request_bytes(url).decode("utf-8", errors="replace")
-    data = extract_initial_data(page)
+    urls = [
+        f"https://www.youtube.com/channel/{channel_id}/playlists",
+        f"https://www.youtube.com/channel/{channel_id}/playlists?view=1&sort=dd&shelf_id=0",
+    ]
 
-    found: dict[str, dict] = {}
-    renderer_keys = ("gridPlaylistRenderer", "playlistRenderer", "lockupViewModel")
-    for node in walk(data):
-        renderer = None
-        renderer_kind = ""
-        for key in renderer_keys:
-            if isinstance(node.get(key), dict):
-                renderer = node[key]
-                renderer_kind = key
-                break
-        if not renderer:
-            continue
+    last_error: Exception | None = None
+    for url in urls:
+        try:
+            page = request_bytes(url).decode("utf-8", errors="replace")
+            if "consent.youtube.com" in page.lower():
+                raise RuntimeError("YouTube returned consent page")
 
-        playlist_id = str(renderer.get("playlistId") or "").strip()
-        title = ""
-        thumb = ""
-        count = None
+            data = extract_initial_data(page)
+            found: dict[str, dict] = {}
 
-        if renderer_kind in ("gridPlaylistRenderer", "playlistRenderer"):
-            title = text_value(renderer.get("title"))
-            thumb = thumbnail_value(renderer.get("thumbnail"))
-            count = parse_count(text_value(renderer.get("videoCountText")))
-        else:
-            # Newer YouTube lockup model.
-            content_id = renderer.get("contentId")
-            if isinstance(content_id, str):
-                playlist_id = content_id.strip()
-            metadata = renderer.get("metadata", {}).get("lockupMetadataViewModel", {})
-            title = text_value(metadata.get("title"))
-            thumb = thumbnail_value(
-                renderer.get("contentImage", {})
-                .get("collectionThumbnailViewModel", {})
-                .get("primaryThumbnail", {})
-                .get("thumbnailViewModel", {})
-                .get("image", {})
-                .get("sources") and {"thumbnails": renderer["contentImage"]["collectionThumbnailViewModel"]["primaryThumbnail"]["thumbnailViewModel"]["image"]["sources"]}
-            )
+            for node in walk(data):
+                if not isinstance(node, dict):
+                    continue
 
-        if not playlist_id or not title or playlist_id in found:
-            continue
-        found[playlist_id] = {
-            "id": playlist_id,
-            "title": title,
-            "thumbnail": thumb,
-            "videoCount": count,
-            "url": f"https://www.youtube.com/playlist?list={playlist_id}",
-        }
-        if len(found) >= PLAYLIST_LIMIT:
-            break
+                renderer = None
+                for key in (
+                    "gridPlaylistRenderer",
+                    "playlistRenderer",
+                    "lockupViewModel",
+                    "richItemRenderer",
+                ):
+                    candidate = node.get(key)
+                    if isinstance(candidate, dict):
+                        renderer = candidate
+                        break
 
-    return list(found.values())
+                # Also inspect any node that directly contains playlist identifiers.
+                if renderer is None and ("playlistId" in node or "contentId" in node):
+                    renderer = node
+
+                if not renderer:
+                    continue
+
+                playlist_id = playlist_id_from_renderer(renderer)
+                if not playlist_id or playlist_id in found:
+                    continue
+
+                title = renderer_title(renderer)
+                if not title:
+                    continue
+
+                # Avoid accidental navigation/system labels.
+                lowered = title.lower()
+                if lowered in {"playlists", "playlist", "view full playlist"}:
+                    continue
+
+                found[playlist_id] = {
+                    "id": playlist_id,
+                    "title": title,
+                    "thumbnail": source_url(renderer),
+                    "videoCount": playlist_count_from_renderer(renderer),
+                    "url": f"https://www.youtube.com/playlist?list={playlist_id}",
+                }
+
+                if len(found) >= PLAYLIST_LIMIT:
+                    break
+
+            if found:
+                return list(found.values())
+
+            raise RuntimeError("no playlist renderers found")
+        except Exception as exc:
+            last_error = exc
+
+    raise RuntimeError(str(last_error or "playlist fetch failed"))
 
 
 def previous_channel(previous: dict, code: str) -> dict:
@@ -193,14 +331,22 @@ def main() -> None:
         except Exception:
             previous = {}
 
-    result = {"updatedAt": datetime.now(timezone.utc).isoformat(), "channels": {}}
+    result = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(),
+        "channels": {},
+    }
 
     for code, channel_id in CHANNELS.items():
         old = previous_channel(previous, code)
-        channel = {"videos": old["videos"], "playlists": old["playlists"]}
+        channel = {
+            "videos": old["videos"],
+            "playlists": old["playlists"],
+        }
 
         try:
-            channel["videos"] = fetch_videos(channel_id)
+            videos = fetch_videos(channel_id)
+            if videos:
+                channel["videos"] = videos
             print(f"{code}: {len(channel['videos'])} videos")
         except Exception as exc:
             print(f"{code}: video update failed: {exc}")
@@ -216,7 +362,10 @@ def main() -> None:
         result["channels"][code] = channel
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    OUTPUT.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
 
 if __name__ == "__main__":
