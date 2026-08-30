@@ -1,18 +1,16 @@
 /*
   MOYAMOVA landing configuration.
-  Add the two YouTube channel IDs when ready.
-  Example channel ID format: UCxxxxxxxxxxxxxxxxxxxxxx
 */
 window.MOYAMOVA_CONFIG = {
   trainerUrl: 'https://moyamova.online/',
   channels: {
     uk: {
-      channelId: '',
-      channelUrl: ''
+      channelId: 'UCo_Srxy3jgF4PbuxgldLpWA',
+      channelUrl: 'https://www.youtube.com/channel/UCo_Srxy3jgF4PbuxgldLpWA'
     },
     ru: {
-      channelId: '',
-      channelUrl: ''
+      channelId: 'UChUFZoc6nnrzqPCsKQx5xmw',
+      channelUrl: 'https://www.youtube.com/channel/UChUFZoc6nnrzqPCsKQx5xmw'
     }
   }
 };
