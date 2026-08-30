@@ -1,12 +1,50 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-08-30T19:51:19.005225+00:00",
   "channels": {
     "uk": {
-      "videos": [],
+      "videos": [
+        {
+          "id": "I4WfafpbMYI",
+          "title": "Німецькі дієслова: сімейство BRINGEN 🇩🇪 Частина 2 #shorts",
+          "published": "2026-08-30T05:00:27+00:00",
+          "thumbnail": "https://i2.ytimg.com/vi/I4WfafpbMYI/hqdefault.jpg"
+        },
+        {
+          "id": "8m46YJofu-4",
+          "title": "Німецькі дієслова з прийменниками А2 | Verben mit Präpositionen 🇩🇪🇺🇦",
+          "published": "2026-08-29T12:47:02+00:00",
+          "thumbnail": "https://i1.ytimg.com/vi/8m46YJofu-4/hqdefault.jpg"
+        },
+        {
+          "id": "2ZYwrs4tf5Q",
+          "title": "Німецькі дієслова: сімейство HABEN 🇩🇪 #shorts",
+          "published": "2026-08-29T07:00:17+00:00",
+          "thumbnail": "https://i3.ytimg.com/vi/2ZYwrs4tf5Q/hqdefault.jpg"
+        }
+      ],
       "playlists": []
     },
     "ru": {
-      "videos": [],
+      "videos": [
+        {
+          "id": "X4J9Z7nYq7k",
+          "title": "Думаешь, ты знаешь глагол BRINGEN? Проверь эти приставки! (Часть 2) 🤯 #shorts  #deutsch",
+          "published": "2026-08-30T07:00:38+00:00",
+          "thumbnail": "https://i1.ytimg.com/vi/X4J9Z7nYq7k/hqdefault.jpg"
+        },
+        {
+          "id": "yDRACunwnWk",
+          "title": "Прокачай свой немецкий! Чистая лексика А2: глаголы, которые ты обязан знать",
+          "published": "2026-08-29T15:00:42+00:00",
+          "thumbnail": "https://i2.ytimg.com/vi/yDRACunwnWk/hqdefault.jpg"
+        },
+        {
+          "id": "_CBwxLmZjlA",
+          "title": "Хватит переводить BRINGEN как «приносить»! Ты упускаешь главное 🤯 (Часть 1) #shorts  #deutsch",
+          "published": "2026-08-29T05:00:32+00:00",
+          "thumbnail": "https://i4.ytimg.com/vi/_CBwxLmZjlA/hqdefault.jpg"
+        }
+      ],
       "playlists": []
     }
   }
