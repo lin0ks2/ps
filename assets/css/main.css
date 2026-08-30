@@ -113,3 +113,32 @@
   .footer-links{gap:8px}
   .footer-bottom{margin-top:20px;padding-top:14px}
 }
+
+/* Mobile footer: full-width brand/strapline, two link columns below. */
+@media(max-width:640px){
+  .footer-grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    column-gap:24px;
+    row-gap:18px;
+  }
+  .footer-brand{
+    grid-column:1 / -1;
+  }
+  .footer-brand p{
+    width:100%;
+    max-width:none;
+    margin:10px 0 2px;
+  }
+  .footer-links{
+    min-width:0;
+    gap:8px;
+    align-self:start;
+  }
+  .footer-links a{
+    line-height:1.35;
+    overflow-wrap:anywhere;
+  }
+  .footer-bottom{
+    margin-top:18px;
+  }
+}
