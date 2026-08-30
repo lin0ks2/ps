@@ -11,6 +11,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    from yt_dlp import YoutubeDL
+except ImportError:
+    YoutubeDL = None
+
 CHANNELS = {
     "uk": "UCo_Srxy3jqF4PbuxgldLpWA",
     "ru": "UChUFZoc6nnrzqPCsKQx5xmw",
@@ -239,76 +244,79 @@ def playlist_count_from_renderer(renderer: dict) -> int | None:
 
 
 def fetch_playlists(channel_id: str) -> list[dict]:
-    urls = [
-        f"https://www.youtube.com/channel/{channel_id}/playlists",
-        f"https://www.youtube.com/channel/{channel_id}/playlists?view=1&sort=dd&shelf_id=0",
-    ]
+    """Use yt-dlp's YouTube extractor instead of scraping YouTube HTML ourselves."""
+    if YoutubeDL is None:
+        raise RuntimeError("yt-dlp is not installed")
 
-    last_error: Exception | None = None
-    for url in urls:
+    url = f"https://www.youtube.com/channel/{channel_id}/playlists"
+    options = {
+        "quiet": True,
+        "no_warnings": True,
+        "extract_flat": True,
+        "skip_download": True,
+        "playlistend": PLAYLIST_LIMIT,
+        "ignoreerrors": True,
+        "socket_timeout": 35,
+    }
+
+    with YoutubeDL(options) as ydl:
+        info = ydl.extract_info(url, download=False)
+
+    if not isinstance(info, dict):
+        raise RuntimeError("yt-dlp returned no channel data")
+
+    entries = info.get("entries")
+    if not isinstance(entries, list):
+        raise RuntimeError("yt-dlp returned no playlist entries")
+
+    playlists: list[dict] = []
+    seen: set[str] = set()
+
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+
+        playlist_id = str(entry.get("id") or "").strip()
+        title = str(entry.get("title") or "").strip()
+        if not playlist_id or not title or playlist_id in seen:
+            continue
+
+        # Channel playlist tab may occasionally surface non-playlist entries.
+        webpage_url = str(entry.get("url") or entry.get("webpage_url") or "")
+        ie_key = str(entry.get("ie_key") or entry.get("extractor_key") or "").lower()
+        if "playlist" not in ie_key and "list=" not in webpage_url and not playlist_id.startswith(("PL", "UU", "OLAK", "RD")):
+            continue
+
+        thumbnail = str(entry.get("thumbnail") or "").strip()
+        if not thumbnail:
+            thumbs = entry.get("thumbnails")
+            if isinstance(thumbs, list):
+                valid = [t for t in thumbs if isinstance(t, dict) and t.get("url")]
+                if valid:
+                    thumbnail = str(valid[-1].get("url") or "")
+
+        count = entry.get("playlist_count")
         try:
-            page = request_bytes(url).decode("utf-8", errors="replace")
-            if "consent.youtube.com" in page.lower():
-                raise RuntimeError("YouTube returned consent page")
+            count = int(count) if count is not None else None
+        except (TypeError, ValueError):
+            count = None
 
-            data = extract_initial_data(page)
-            found: dict[str, dict] = {}
+        playlists.append({
+            "id": playlist_id,
+            "title": title,
+            "thumbnail": thumbnail,
+            "videoCount": count,
+            "url": f"https://www.youtube.com/playlist?list={playlist_id}",
+        })
+        seen.add(playlist_id)
 
-            for node in walk(data):
-                if not isinstance(node, dict):
-                    continue
+        if len(playlists) >= PLAYLIST_LIMIT:
+            break
 
-                renderer = None
-                for key in (
-                    "gridPlaylistRenderer",
-                    "playlistRenderer",
-                    "lockupViewModel",
-                    "richItemRenderer",
-                ):
-                    candidate = node.get(key)
-                    if isinstance(candidate, dict):
-                        renderer = candidate
-                        break
+    if not playlists:
+        raise RuntimeError("yt-dlp found 0 public playlists")
 
-                # Also inspect any node that directly contains playlist identifiers.
-                if renderer is None and ("playlistId" in node or "contentId" in node):
-                    renderer = node
-
-                if not renderer:
-                    continue
-
-                playlist_id = playlist_id_from_renderer(renderer)
-                if not playlist_id or playlist_id in found:
-                    continue
-
-                title = renderer_title(renderer)
-                if not title:
-                    continue
-
-                # Avoid accidental navigation/system labels.
-                lowered = title.lower()
-                if lowered in {"playlists", "playlist", "view full playlist"}:
-                    continue
-
-                found[playlist_id] = {
-                    "id": playlist_id,
-                    "title": title,
-                    "thumbnail": source_url(renderer),
-                    "videoCount": playlist_count_from_renderer(renderer),
-                    "url": f"https://www.youtube.com/playlist?list={playlist_id}",
-                }
-
-                if len(found) >= PLAYLIST_LIMIT:
-                    break
-
-            if found:
-                return list(found.values())
-
-            raise RuntimeError("no playlist renderers found")
-        except Exception as exc:
-            last_error = exc
-
-    raise RuntimeError(str(last_error or "playlist fetch failed"))
+    return playlists
 
 
 def previous_channel(previous: dict, code: str) -> dict:

@@ -25,7 +25,7 @@
       longLabel: 'Большие видео', uaLongTime: 'вт · пт · 17:00', ruLongTime: 'пн · вт · чт · пт · 17:00',
       playlistKicker: 'Все подборки', playlistTitle: 'Выбери тему и продолжай на YouTube.',
       playlistIntro: 'Плейлисты обновляются автоматически — новые подборки появятся здесь вместе с обложками.',
-      playlistUa: 'Українською', playlistRu: 'По-русски', allOnYoutube: 'Все на YouTube', playlistLoading: 'Загружаем плейлисты…',
+      playlistUa: 'Українською', playlistRu: 'По-русски', allOnYoutube: 'Все на YouTube', playlistLoading: 'Загружаем плейлисты…', playlistUnavailable: 'Плейлисты временно недоступны. Откройте канал на YouTube.',
       viberTitle: 'Присоединяйся к сообществу MOYAMOVA.', viberText: 'Новости проекта, обновления тренажёра и связь с MOYAMOVA — в одной группе.', joinViber: 'Открыть Viber',
       helpKicker: 'MOYAMOVA как приложение', helpTitle: 'Добавь тренажёр на главный экран телефона.',
       helpText: 'Короткая инструкция для iPhone / iPad и Android, плюс ответы по использованию MOYAMOVA.', openHelp: 'Открыть помощь',
@@ -54,7 +54,7 @@
       longLabel: 'Довгі відео', uaLongTime: 'вт · пт · 17:00', ruLongTime: 'пн · вт · чт · пт · 17:00',
       playlistKicker: 'Усі добірки', playlistTitle: 'Обери тему та продовжуй на YouTube.',
       playlistIntro: 'Плейлисти оновлюються автоматично — нові добірки з’являться тут разом з обкладинками.',
-      playlistUa: 'Українською', playlistRu: 'Російською', allOnYoutube: 'Усе на YouTube', playlistLoading: 'Завантажуємо плейлисти…',
+      playlistUa: 'Українською', playlistRu: 'Російською', allOnYoutube: 'Усе на YouTube', playlistLoading: 'Завантажуємо плейлисти…', playlistUnavailable: 'Плейлисти тимчасово недоступні. Відкрийте канал на YouTube.',
       viberTitle: 'Приєднуйся до спільноти MOYAMOVA.', viberText: 'Новини проєкту, оновлення тренажера та зв’язок із MOYAMOVA — в одній групі.', joinViber: 'Відкрити Viber',
       helpKicker: 'MOYAMOVA як застосунок', helpTitle: 'Додай тренажер на головний екран телефона.',
       helpText: 'Коротка інструкція для iPhone / iPad та Android, а також відповіді щодо використання MOYAMOVA.', openHelp: 'Відкрити допомогу',
@@ -156,7 +156,8 @@
     const slot = document.querySelector(`[data-playlist-slot="${code}"]`);
     if (!slot) return;
     if (!Array.isArray(playlists) || !playlists.length) {
-      slot.innerHTML = `<div class="playlist-empty">${translations[document.documentElement.dataset.lang || 'ru'].playlistLoading}</div>`;
+      const lang = document.documentElement.dataset.lang || 'ru';
+      slot.innerHTML = `<div class="playlist-empty">${translations[lang].playlistUnavailable}</div>`;
       return;
     }
 
