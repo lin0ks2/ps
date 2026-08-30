@@ -96,3 +96,7 @@
   .help-strip-card{grid-template-columns:1fr;text-align:left;padding:27px 22px;border-radius:24px}
   .help-strip-card .btn{width:100%}
 }
+
+.channel-logo{width:58px;height:58px;flex:0 0 58px;display:block;object-fit:cover;border-radius:50%;border:1px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(25,55,65,.16)}
+.playlist-channel-logo{width:34px;height:34px;flex:0 0 34px;display:block;object-fit:cover;border-radius:50%;border:1px solid #d9e6e9;box-shadow:0 5px 13px rgba(25,55,65,.11)}
+@media(max-width:640px){.channel-logo{width:50px;height:50px;flex-basis:50px}.playlist-channel-logo{width:30px;height:30px;flex-basis:30px}}
