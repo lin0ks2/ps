@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31T13:53:20.194989+00:00",
+  "updatedAt": "2026-08-31T22:52:00.588658+00:00",
   "channels": {
     "uk": {
       "videos": [
@@ -47,14 +47,14 @@
         {
           "id": "PLLkxyBA6vBgE",
           "title": "Німецька А2 : Deutsch_A2",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLLkxyBA6vBgE/studio_square_thumbnail.jpg?sqp=CO2B1tQG-oaymwEICIAKENAFSFqi85f_AwYInbi91AY=&rs=AOn4CLDNb2ivJtgr1aK_ugyRqBe3pby8hg",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLkxyBA6vBgE/studio_square_thumbnail.jpg?sqp=CJrc19QG-oaymwEICIAKENAFSFqi85f_AwYInbi91AY=&rs=AOn4CLCfZwTq1ZVo6Rl6mAuK98nlkmmz1w",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLLkxyBA6vBgE"
         },
         {
           "id": "PLCgV7MELMub4",
           "title": "Німецька A1 : Deutsch_A1",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLCgV7MELMub4/studio_square_thumbnail.jpg?sqp=CLCN1tQG-oaymwEICIAKENAFSFqi85f_AwYIvLm91AY=&rs=AOn4CLAgPHQHodiQTT43r2tTqe9PaIJkXw",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLCgV7MELMub4/studio_square_thumbnail.jpg?sqp=CNrZ19QG-oaymwEICIAKENAFSFqi85f_AwYIvLm91AY=&rs=AOn4CLCLew1fu4MCR18DOolt02vD16hynQ",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLCgV7MELMub4"
         }
@@ -62,6 +62,12 @@
     },
     "ru": {
       "videos": [
+        {
+          "id": "16QBhQ16fds",
+          "title": "Твой немецкий растет! Третья сотня главных СУЩЕСТВИТЕЛЬНЫХ с переводом (Часть 3 из 6)",
+          "published": "2026-08-31T15:00:05+00:00",
+          "thumbnail": "https://i2.ytimg.com/vi/16QBhQ16fds/hqdefault.jpg"
+        },
         {
           "id": "_S1MnuxcsMU",
           "title": "Один глагол SEHEN — десятки скрытых смыслов! (Часть 1)",
@@ -73,12 +79,6 @@
           "title": "Думаешь, ты знаешь глагол BRINGEN? Проверь эти приставки! (Часть 2) 🤯 #shorts  #deutsch",
           "published": "2026-08-30T07:00:38+00:00",
           "thumbnail": "https://i1.ytimg.com/vi/X4J9Z7nYq7k/hqdefault.jpg"
-        },
-        {
-          "id": "yDRACunwnWk",
-          "title": "Прокачай свой немецкий! Чистая лексика А2: глаголы, которые ты обязан знать",
-          "published": "2026-08-29T15:00:42+00:00",
-          "thumbnail": "https://i2.ytimg.com/vi/yDRACunwnWk/hqdefault.jpg"
         }
       ],
       "playlists": [
@@ -92,28 +92,28 @@
         {
           "id": "PLLC3q2I8iUhk",
           "title": "Немецкий A1 | Слова по частям речи DE",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLLC3q2I8iUhk/studio_square_thumbnail.jpg?sqp=CIDM1dQG-oaymwEICIAKENAFSFqi85f_AwYI58K61AY=&rs=AOn4CLBhPRZ1iY_r5CDC_luLyG28YNaJSQ",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLC3q2I8iUhk/studio_square_thumbnail.jpg?sqp=COjf19QG-oaymwEICIAKENAFSFqi85f_AwYI58K61AY=&rs=AOn4CLCAT4wbPg7rbtzrUPiyUUrL-vmrBg",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLLC3q2I8iUhk"
         },
         {
           "id": "PLYU_y1ToHQ5g",
           "title": "Немецкий A1 | Слова по темам DE",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLYU_y1ToHQ5g/studio_square_thumbnail.jpg?sqp=CODv1dQG-oaymwEICIAKENAFSFqi85f_AwYIk8O61AY=&rs=AOn4CLAwBaJXnfR789BLKTsqPUlqsjNKOQ",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLYU_y1ToHQ5g/studio_square_thumbnail.jpg?sqp=CJTk19QG-oaymwEICIAKENAFSFqi85f_AwYIk8O61AY=&rs=AOn4CLB02Jcq_h6uAJOxl39-he5gIxdXrg",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLYU_y1ToHQ5g"
         },
         {
           "id": "PLTRc0OtgN_-0",
           "title": "Немецкий A2 : Deutsch_A2",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLTRc0OtgN_-0/studio_square_thumbnail.jpg?sqp=COjm1dQG-oaymwEICIAKENAFSFqi85f_AwYI8pa71AY=&rs=AOn4CLDpZadPZkEBWDUyiD64CeLqaArwLA",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLTRc0OtgN_-0/studio_square_thumbnail.jpg?sqp=CL7H19QG-oaymwEICIAKENAFSFqi85f_AwYI8pa71AY=&rs=AOn4CLDCeypYfue5glI7teO28nff9vliBg",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLTRc0OtgN_-0"
         },
         {
           "id": "PLFmrYe5tv-xo",
           "title": "Немецкий A1 : Deutsch_A1",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLFmrYe5tv-xo/studio_square_thumbnail.jpg?sqp=CKDi1dQG-oaymwEICIAKENAFSFqi85f_AwYIhcW61AY=&rs=AOn4CLAE7PwYzhFeYpmz7apGtXkamUlBpw",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLFmrYe5tv-xo/studio_square_thumbnail.jpg?sqp=CPbe19QG-oaymwEICIAKENAFSFqi85f_AwYIhcW61AY=&rs=AOn4CLAkBT8uR5K6F445Dwptqtpp9K_Nqw",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLFmrYe5tv-xo"
         }
