@@ -13,7 +13,7 @@
       navTrainer: 'Тренажёр', navHelp: 'Помощь', eyebrow: 'Немецкий без лишней теории',
       heroTitle: 'Учи немецкий<br><span>практикой.</span>',
       heroLead: 'MOYAMOVA — простой тренажёр слов, артиклей и конструкций. Открывается прямо в браузере.',
-      openTrainer: 'Запустить тренажёр', heroNote: 'Бесплатно · без установки',
+      openTrainer: 'Запустить тренажёр', openTrainerDesktop: 'Запустить Desktop', openTrainerMobile: 'Запустить Mobile', heroNote: 'Бесплатно · без установки',
       point1: 'Слова и переводы', point2: 'Артикли и грамматика', point3: 'Повторение ошибок',
       floatPractice: 'Практика<br><b>без перегруза</b>', floatLevel: 'в одном<br>тренажёре',
       trainerKicker: 'Внутри MOYAMOVA', trainerTitle: 'Только то, что помогает практиковаться.',
@@ -44,7 +44,7 @@
       navTrainer: 'Тренажер', navHelp: 'Допомога', eyebrow: 'Німецька без зайвої теорії',
       heroTitle: 'Вивчай німецьку<br><span>на практиці.</span>',
       heroLead: 'MOYAMOVA — простий тренажер слів, артиклів і конструкцій. Відкривається просто у браузері.',
-      openTrainer: 'Запустити тренажер', heroNote: 'Безкоштовно · без встановлення',
+      openTrainer: 'Запустити тренажер', openTrainerDesktop: 'Запустити Desktop', openTrainerMobile: 'Запустити Mobile', heroNote: 'Безкоштовно · без встановлення',
       point1: 'Слова й переклади', point2: 'Артиклі та граматика', point3: 'Повторення помилок',
       floatPractice: 'Практика<br><b>без перевантаження</b>', floatLevel: 'в одному<br>тренажері',
       trainerKicker: 'Всередині MOYAMOVA', trainerTitle: 'Тільки те, що допомагає практикуватися.',
@@ -77,24 +77,26 @@
     event.preventDefault();
     const link = event.currentTarget;
     const targetUrl = link?.href || trainerUrl;
+    const requestedSize = link?.dataset.trainerSize || 'mobile';
     const location = link?.closest('.hero') ? 'hero' : (link?.closest('.final-cta') ? 'final_cta' : 'other');
+
+    const presets = {
+      desktop: { width: 1366, height: 850, name: 'moyamova_desktop_test' },
+      mobile: { width: 390, height: 844, name: 'moyamova_mobile_test' }
+    };
+    const preset = presets[requestedSize] || presets.mobile;
 
     trackEvent('trainer_open', {
       location,
-      device: window.innerWidth < 768 ? 'mobile' : 'desktop',
+      device: requestedSize,
       language: document.documentElement.dataset.lang || 'ru'
     });
 
-    const isSmall = window.matchMedia('(max-width: 720px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isSmall) {
-      window.open(targetUrl, '_blank', 'noopener');
-      return;
-    }
-    const width = 430;
-    const height = Math.min(820, Math.max(650, window.screen.availHeight - 80));
+    const width = Math.min(preset.width, window.screen.availWidth);
+    const height = Math.min(preset.height, window.screen.availHeight);
     const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
     const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
-    const popup = window.open(targetUrl, 'moyamova_trainer', `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
+    const popup = window.open(targetUrl, preset.name, `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`);
     if (!popup) window.open(targetUrl, '_blank', 'noopener');
   }
 

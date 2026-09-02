@@ -153,3 +153,11 @@
 .beta-card .btn{white-space:nowrap}
 @media(max-width:900px){.beta-card{grid-template-columns:auto 1fr}.beta-card .btn{grid-column:1/-1}}
 @media(max-width:640px){.beta-section{padding-top:56px}.beta-card{grid-template-columns:1fr;text-align:center;padding:25px 20px}.beta-icon{margin:auto}.beta-card .btn{width:100%}}
+
+/* Temporary trainer viewport controls for responsive QA. */
+.trainer-test-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-test-mobile{background:#fff;color:var(--dark);border:1px solid #cfe1e5;box-shadow:0 10px 26px rgba(38,76,86,.08)}
+.btn-test-mobile:hover{transform:translateY(-2px);border-color:#a9cdd3}
+.trainer-test-actions--final{justify-content:flex-end}
+@media(max-width:900px){.trainer-test-actions--final{grid-column:1/-1;justify-content:stretch}.trainer-test-actions--final .btn{flex:1}}
+@media(max-width:640px){.trainer-test-actions{width:100%;display:grid;grid-template-columns:1fr}.trainer-test-actions .btn{width:100%}.trainer-test-actions--final{grid-column:auto}}

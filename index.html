@@ -49,10 +49,16 @@
         <h1 data-i18n="heroTitle">Учи немецкий<br><span>практикой.</span></h1>
         <p class="hero-lead" data-i18n="heroLead">MOYAMOVA — простой тренажёр слов, артиклей и конструкций. Открывается прямо в браузере.</p>
         <div class="hero-actions">
-          <a href="https://moyamova.online/" class="btn btn-primary" data-open-trainer>
-            <span data-i18n="openTrainer">Запустить тренажёр</span>
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <div class="trainer-test-actions" aria-label="Тестовый запуск тренажёра">
+            <a href="https://moyamova.online/" class="btn btn-primary" data-open-trainer data-trainer-size="desktop">
+              <span data-i18n="openTrainerDesktop">Запустить Desktop</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="https://moyamova.online/" class="btn btn-test-mobile" data-open-trainer data-trainer-size="mobile">
+              <span data-i18n="openTrainerMobile">Запустить Mobile</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
           <p class="hero-note" data-i18n="heroNote">Бесплатно · без установки</p>
         </div>
       </div>
@@ -285,7 +291,10 @@
           <p class="kicker" data-i18n="ctaKicker">Можно начать прямо сейчас</p>
           <h2 data-i18n="ctaTitle">Открой MOYAMOVA и попробуй одну сессию.</h2>
         </div>
-        <a href="https://moyamova.online/" class="btn btn-dark" data-open-trainer><span data-i18n="openTrainer">Запустить тренажёр</span><span>↗</span></a>
+        <div class="trainer-test-actions trainer-test-actions--final">
+          <a href="https://moyamova.online/" class="btn btn-dark" data-open-trainer data-trainer-size="desktop"><span data-i18n="openTrainerDesktop">Запустить Desktop</span><span>↗</span></a>
+          <a href="https://moyamova.online/" class="btn btn-test-mobile" data-open-trainer data-trainer-size="mobile"><span data-i18n="openTrainerMobile">Запустить Mobile</span><span>↗</span></a>
+        </div>
       </div>
     </section>
   </main>
