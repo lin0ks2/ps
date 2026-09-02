@@ -1,6 +1,6 @@
 (() => {
   const config = window.MOYAMOVA_CONFIG || {};
-  const trainerUrl = config.trainerUrl || 'https://moyamova.online/';
+  const trainerUrl = config.trainerUrl || 'https://lin0ks2.github.io/training-app/';
 
   function trackEvent(name, params = {}) {
     if (typeof window.gtag === 'function') {
