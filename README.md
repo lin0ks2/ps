@@ -1,6 +1,6 @@
 # MOYAMOVA Landing
 
-Static landing page for **moyamova.com** presenting the MOYAMOVA web trainer at **https://moyamova.online/** and the RU/UA YouTube channels.
+Static landing page for **moyamova.com** presenting the MOYAMOVA web trainer at **https://lin0ks2.github.io/training-app/** and the RU/UA YouTube channels.
 
 ## Deploy
 

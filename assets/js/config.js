@@ -2,7 +2,7 @@
   MOYAMOVA landing configuration.
 */
 window.MOYAMOVA_CONFIG = {
-  trainerUrl: 'https://moyamova.online/',
+  trainerUrl: 'https://lin0ks2.github.io/training-app/',
   // Paste the public MOYAMOVA Viber group invite URL here when ready.
   viberUrl: 'https://invite.viber.com/?g2=AQAitGq4muZQCVW44K1Z4aR%2FP9VDM2%2Bso14cyg3Ec1e7mt%2BTaLbs5S1UdHZCU%2Fy5',
   channels: {
