@@ -1,8 +1,14 @@
 {
-  "updatedAt": "2026-09-04T11:19:53.047793+00:00",
+  "updatedAt": "2026-09-04T16:22:53.591384+00:00",
   "channels": {
     "uk": {
       "videos": [
+        {
+          "id": "RiPKyIfDhC8",
+          "title": "Переходь на рівень А2! ТОП німецьких прикметників з прийменниками, які треба знати",
+          "published": "2026-09-04T16:00:01+00:00",
+          "thumbnail": "https://i3.ytimg.com/vi/RiPKyIfDhC8/hqdefault.jpg"
+        },
         {
           "id": "J5W-MlimW44",
           "title": "Німецькі дієслова: сімейство ZIEHEN 🇩🇪 Частина 3 #shorts",
@@ -14,12 +20,6 @@
           "title": "Німецькі дієслова: сімейство ZIEHEN 🇩🇪 Частина 2 #shorts",
           "published": "2026-09-03T05:00:16+00:00",
           "thumbnail": "https://i3.ytimg.com/vi/68X_u5MBM3Y/hqdefault.jpg"
-        },
-        {
-          "id": "o8vuCLUkQYs",
-          "title": "Німецькі дієслова: сімейство ZIEHEN 🇩🇪 Частина 1 #shorts",
-          "published": "2026-09-02T05:00:23+00:00",
-          "thumbnail": "https://i4.ytimg.com/vi/o8vuCLUkQYs/hqdefault.jpg"
         }
       ],
       "playlists": [
@@ -54,14 +54,14 @@
         {
           "id": "PLLkxyBA6vBgE",
           "title": "Німецька А2 : Deutsch_A2",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLLkxyBA6vBgE/studio_square_thumbnail.jpg?sqp=COKw6tQG-oaymwEICIAKENAFSFqi85f_AwYInbi91AY=&rs=AOn4CLBLWkh8r2inWmwByl5qdXZdZjaiPQ",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLkxyBA6vBgE/studio_square_thumbnail.jpg?sqp=CIzT69QG-oaymwEICIAKENAFSFqi85f_AwYInbi91AY=&rs=AOn4CLCWUaiPLlN_qSaprn9cp3UZSctfAw",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLLkxyBA6vBgE"
         },
         {
           "id": "PLCgV7MELMub4",
           "title": "Німецька A1 : Deutsch_A1",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLCgV7MELMub4/studio_square_thumbnail.jpg?sqp=COKP6tQG-oaymwEICIAKENAFSFqi85f_AwYIvLm91AY=&rs=AOn4CLDzczf6tFl-qdk3hHc-UOSoQ93ZTQ",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLCgV7MELMub4/studio_square_thumbnail.jpg?sqp=CO7a69QG-oaymwEICIAKENAFSFqi85f_AwYIvLm91AY=&rs=AOn4CLDZwdgzBG64ok2uQfw5yRCHwG6Ajw",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLCgV7MELMub4"
         }
@@ -69,6 +69,12 @@
     },
     "ru": {
       "videos": [
+        {
+          "id": "Yun0m4HlJKw",
+          "title": "Переходи на уровень А2! ТОП немецких глаголов с отделяемыми приставками с переводом",
+          "published": "2026-09-04T15:00:21+00:00",
+          "thumbnail": "https://i2.ytimg.com/vi/Yun0m4HlJKw/hqdefault.jpg"
+        },
         {
           "id": "_fk-pTlCSh0",
           "title": "Секрет глагола ZIEHEN: Как 1 слово заменяет 10? 🇩🇪 #shorts #немецкийязык #немецкийонлайн",
@@ -80,12 +86,6 @@
           "title": "Куда делась частица SICH?! ТОП немецких глаголов, в которых ошибаются ВСЕ",
           "published": "2026-09-03T17:16:26+00:00",
           "thumbnail": "https://i1.ytimg.com/vi/xfqNqPIo8QA/hqdefault.jpg"
-        },
-        {
-          "id": "mcXI-jtofSQ",
-          "title": "Здесь ничего не отделяется! ТОП немецких глаголов с неотделяемыми приставками (А2)",
-          "published": "2026-09-03T17:16:14+00:00",
-          "thumbnail": "https://i2.ytimg.com/vi/mcXI-jtofSQ/hqdefault.jpg"
         }
       ],
       "playlists": [
@@ -106,28 +106,28 @@
         {
           "id": "PLLC3q2I8iUhk",
           "title": "Немецкий A1 | Слова по частям речи DE",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLLC3q2I8iUhk/studio_square_thumbnail.jpg?sqp=CLGu6tQG-oaymwEICIAKENAFSFqi85f_AwYI58K61AY=&rs=AOn4CLBm_b_Qk2OGhiDrPPHNbDrggzktZA",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLLC3q2I8iUhk/studio_square_thumbnail.jpg?sqp=CKDO69QG-oaymwEICIAKENAFSFqi85f_AwYI58K61AY=&rs=AOn4CLDZ6b_7Msz9oMbDTTbKIfkcCj4MAQ",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLLC3q2I8iUhk"
         },
         {
           "id": "PLYU_y1ToHQ5g",
           "title": "Немецкий A1 | Слова по темам DE",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLYU_y1ToHQ5g/studio_square_thumbnail.jpg?sqp=CL-w6tQG-oaymwEICIAKENAFSFqi85f_AwYIk8O61AY=&rs=AOn4CLBeKm7bedphpcR277ZqFO-GzS-Ecw",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLYU_y1ToHQ5g/studio_square_thumbnail.jpg?sqp=CLez69QG-oaymwEICIAKENAFSFqi85f_AwYIk8O61AY=&rs=AOn4CLB6_q1ZWpqeizmynYgArZ8dvIwV5A",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLYU_y1ToHQ5g"
         },
         {
           "id": "PLTRc0OtgN_-0",
           "title": "Немецкий A2 : Deutsch_A2",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLTRc0OtgN_-0/studio_square_thumbnail.jpg?sqp=CNqo6tQG-oaymwEICIAKENAFSFqi85f_AwYI8pa71AY=&rs=AOn4CLAvRqq15QwTYB_x0H9zuL7BPuHmPw",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLTRc0OtgN_-0/studio_square_thumbnail.jpg?sqp=CO7K69QG-oaymwEICIAKENAFSFqi85f_AwYI8pa71AY=&rs=AOn4CLBOK-EHh3kPoAtsZ20AvmwOuKyFTw",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLTRc0OtgN_-0"
         },
         {
           "id": "PLFmrYe5tv-xo",
           "title": "Немецкий A1 : Deutsch_A1",
-          "thumbnail": "https://i.ytimg.com/pl_c/PLFmrYe5tv-xo/studio_square_thumbnail.jpg?sqp=CMjL6tQG-oaymwEICIAKENAFSFqi85f_AwYIhcW61AY=&rs=AOn4CLBDLB-cp0vfC16hc6EUW_7TPIW1vw",
+          "thumbnail": "https://i.ytimg.com/pl_c/PLFmrYe5tv-xo/studio_square_thumbnail.jpg?sqp=CJrg69QG-oaymwEICIAKENAFSFqi85f_AwYIhcW61AY=&rs=AOn4CLDsz68U_EAdy2pNn0DxwRRV6QM2Bg",
           "videoCount": null,
           "url": "https://www.youtube.com/playlist?list=PLFmrYe5tv-xo"
         }
